@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class AuthorsGuide extends Model
 {
     use HasFactory;
+
+    protected $guarded = ['d'];
 }
