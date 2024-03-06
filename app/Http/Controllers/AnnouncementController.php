@@ -44,7 +44,7 @@ class AnnouncementController extends Controller
     }
     public function destroy($announcement)
     {
-        $this->announcementService->delete($announcement);
+        $this->announcementService->destroy($announcement);
         return redirect()->bank();
     }
 }

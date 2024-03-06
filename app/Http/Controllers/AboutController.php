@@ -25,6 +25,11 @@ class AboutController extends Controller
         ];
         return view('administration.pages.about', $data);
     }
+    public function store(AboutRequest $request)
+    {
+        $this->aboutService->store($request->validated());
+        return redirect()->back();
+    }
     public function createOrUpdate(AboutRequest $request, $about)
     {
         if ($about) {

@@ -3,10 +3,11 @@
 namespace App\Services;
 
 use App\Models\About;
+use App\Traits\UploadImage;
 
 class AboutService
 {
-
+    use UploadImage;
     public function __construct(protected About $about)
     {
     }
@@ -18,6 +19,19 @@ class AboutService
     public function getAboutById($about)
     {
         return $this->about->findOrFail($about);
+    }
+    public function store($data)
+    {
+        $store = $this->about->create([
+            'name' => $data['name'],
+            'location' => $data['location'],
+            'email' => $data['email'],
+            'phone' => $data['phone'],
+            'description' => $data['description'],
+            'image' => $this->uploadImage($data['image'], 'image', 'about/images'),
+            'welcome_message' => $data['welcome_message'],
+        ]);
+        dd($store);
     }
     public function update($about, array $data)
     {
