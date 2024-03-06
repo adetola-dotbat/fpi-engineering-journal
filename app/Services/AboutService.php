@@ -24,9 +24,8 @@ class AboutService
         $about = $this->getAboutById($about);
         return $about->update($data);
     }
-    public function destroy($about)
+    public function first()
     {
-        $about = $this->getAboutById($about);
-        $about->delete();
+        return $this->about->first();
     }
 }
