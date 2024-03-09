@@ -25,6 +25,13 @@ class AboutController extends Controller
         ];
         return view('administration.pages.about.about', $data);
     }
+    public function edit($about)
+    {
+        $data = [
+            'about' => $this->aboutService->first()
+        ];
+        return view('administration.pages.about.about', $data);
+    }
     public function store(AboutRequest $request)
     {
         $this->aboutService->store($request->validated());

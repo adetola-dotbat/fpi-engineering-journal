@@ -6,9 +6,9 @@
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title text-black">About Us</h5>
-                    <form action="{{ route('about.update') }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('about.update', $about->id) }}" method="POST" enctype="multipart/form-data">
                         @csrf
-                        @method('post')
+                        @method('put')
                         <div class="row">
                             <input type="text" name="id" value="{{ $about->id }}" hidden>
                             <div class="mb-3 col-md-6">

@@ -19,9 +19,15 @@
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link @if (Route::is('announcement.create')) active @endif" href="{{ route('announcement.create') }}">
+            <a class="nav-link @if (Route::is('announcement.create')) active @endif"
+                href="{{ route('announcement.create') }}">
                 <i class="bi bi-person"></i>
                 <span>Announcement</span>
+            </a>
+            <a class="nav-link @if (Route::is('call-for-paper.create')) active @endif"
+                href="{{ route('call-for-paper.create') }}">
+                <i class="bi bi-person"></i>
+                <span>Call for paper</span>
             </a>
         </li>
     </ul>
