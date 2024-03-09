@@ -16,42 +16,25 @@ class AboutController extends Controller
         $data = [
             'about' => $this->aboutService->first()
         ];
-        return view('user.pages.about-us', $data);
+        // return view('user.pages.about', $data);
     }
-    public function about()
+    public function create()
     {
         $data = [
             'about' => $this->aboutService->first()
         ];
-        return view('administration.pages.about', $data);
+        return view('administration.pages.about.about', $data);
     }
     public function store(AboutRequest $request)
     {
         $this->aboutService->store($request->validated());
         return redirect()->back();
     }
-    public function createOrUpdate(AboutRequest $request, $about)
+    public function update(AboutRequest $request)
     {
-        if ($about) {
-            $this->aboutService->update($about, $request->validated());
+        if ($request->id) {
+            $this->aboutService->update($request->id, $request->validated());
         }
         return back()->with('message', 'Update Successful');
-    }
-
-    public function updateAboutImage(AboutRequest $request)
-    {
-        $about = $this->about->first();
-        if ($about) {
-            $fileNameToStore = $this->fileUpload('image', 'storage/logo/');
-            Storage::delete('storage/logo/' . $about->image);
-            $about->image = $fileNameToStore;
-            $about->save();
-            return redirect()->back()->with('message', 'Image updated Successful');
-        } else {
-            $fileNameToStore = $this->fileUpload('image', 'storage/logo/');
-            $about->image = $fileNameToStore;
-            $about->save();
-            return redirect()->back()->with('message', 'Image Update Successful');
-        }
     }
 }

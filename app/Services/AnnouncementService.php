@@ -2,7 +2,9 @@
 
 namespace App\Services;
 
+use App\Enums\StatusEnum;
 use App\Models\Announcement;
+use Illuminate\Support\Arr;
 
 class AnnouncementService
 {
@@ -15,15 +17,22 @@ class AnnouncementService
     {
         return $this->announcement->get();
     }
+    public function store(array $data)
+    {
+        $data['status'] = $data['status'] == StatusEnum::PENDING ? StatusEnum::PENDING : StatusEnum::ACTIVATE;
+        return $this->announcement->create($data);
+    }
     public function getAnnouncementById($announcement)
     {
         return $this->announcement->findOrFail($announcement);
     }
-    public function update($announcement, array $data)
+    public function update(int $announcement, array $data)
     {
+        // dd($data);
         $announcement = $this->getAnnouncementById($announcement);
         return $announcement->update($data);
     }
+
     public function destroy($announcement)
     {
         $announcement = $this->getAnnouncementById($announcement);

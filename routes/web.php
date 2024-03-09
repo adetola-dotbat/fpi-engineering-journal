@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\AboutController;
+use App\Http\Controllers\AnnouncementController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,3 +18,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::resource('about', AboutController::class)
+    ->only(['index', 'show', 'create', 'edit', 'store', 'update', 'destroy']);
+
+Route::resource('announcement', AnnouncementController::class)
+    ->only(['index', 'show', 'create', 'edit', 'store', 'update', 'destroy']);

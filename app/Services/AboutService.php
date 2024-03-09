@@ -4,6 +4,7 @@ namespace App\Services;
 
 use App\Models\About;
 use App\Traits\UploadImage;
+use Illuminate\Http\UploadedFile;
 
 class AboutService
 {
@@ -20,18 +21,15 @@ class AboutService
     {
         return $this->about->findOrFail($about);
     }
-    public function store($data)
+    public function store(array $data)
     {
-        $store = $this->about->create([
-            'name' => $data['name'],
-            'location' => $data['location'],
-            'email' => $data['email'],
-            'phone' => $data['phone'],
-            'description' => $data['description'],
-            'image' => $this->uploadImage($data['image'], 'image', 'about/images'),
-            'welcome_message' => $data['welcome_message'],
-        ]);
-        dd($store);
+        if (isset($data['image']) && $data['image'] instanceof UploadedFile) {
+            $data['image'] = $this->uploadImage($data['image'], 'images/about');
+        } else {
+            unset($data['image']); // Remove image from the array if not present or not valid
+        }
+        $store = $this->about->create($data);
+        return $store;
     }
     public function update($about, array $data)
     {
