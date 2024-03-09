@@ -19,6 +19,10 @@ class DesignationService
     {
         return $this->designation->findOrFail($designation);
     }
+    public function store(array $data)
+    {
+        $this->designation->create($data);
+    }
     public function update($designation, array $data)
     {
         $designation = $this->getDesignationById($designation);

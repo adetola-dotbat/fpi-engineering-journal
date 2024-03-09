@@ -24,11 +24,22 @@
                 <i class="bi bi-person"></i>
                 <span>Announcement</span>
             </a>
+        </li>
+        <li>
             <a class="nav-link @if (Route::is('call-for-paper.create')) active @endif"
                 href="{{ route('call-for-paper.create') }}">
                 <i class="bi bi-person"></i>
                 <span>Call for paper</span>
             </a>
         </li>
+
+        <li>
+            <a class="nav-link @if (Route::is('designation.create')) active @endif"
+                href="{{ route('designation.create') }}">
+                <i class="bi bi-person"></i>
+                <span>Designation</span>
+            </a>
+        </li>
+
     </ul>
 </aside>

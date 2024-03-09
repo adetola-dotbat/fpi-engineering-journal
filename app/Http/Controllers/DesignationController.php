@@ -18,14 +18,18 @@ class DesignationController extends Controller
         ];
         return view('user.pages.index', $data);
     }
-
-    public function designation()
+    public function create()
     {
         $data = [
             'title_page' => 'Designation',
             'designations' => $this->designationService->all(),
         ];
-        return view('admin.pages.designation.index', $data);
+        return view('administration.pages.designation.index', $data);
+    }
+    public function store(DesignationRequest $request)
+    {
+        $this->designationService->store($request->validated());
+        return redirect()->back()->with('success', 'Designation successfully added');
     }
     public function edit($designation)
     {
@@ -34,16 +38,16 @@ class DesignationController extends Controller
             'designations' => $this->designationService->all(),
             'designation' => $this->designationService->getDesignationById($designation),
         ];
-        return view('admin.pages.designation.edit', $data);
+        return view('administration.pages.designation.edit', $data);
     }
     public function update(DesignationRequest $request, $designation)
     {
         $this->designationService->update($designation, $request->validated());
-        return redirect()->back();
+        return redirect()->route('designation.create')->with('success', 'Designation updated successfully');
     }
     public function destroy($designation)
     {
         $this->designationService->destroy($designation);
-        return redirect()->back();
+        return redirect()->route('designation.create')->with('success', 'Designation deleted successfully');
     }
 }
