@@ -19,6 +19,10 @@ class CallForPaperService
     {
         return $this->paper->findOrFail($paper);
     }
+    public function store(array $data)
+    {
+        $this->paper->create($data);
+    }
     public function update($paper, array $data)
     {
         $paper = $this->getPaperById($paper);
@@ -28,5 +32,9 @@ class CallForPaperService
     {
         $paper = $this->getPaperById($paper);
         $paper->delete();
+    }
+    public function getFirst()
+    {
+        return $this->paper->first();
     }
 }
