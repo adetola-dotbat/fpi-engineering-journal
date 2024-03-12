@@ -32,12 +32,18 @@
                 <span>Call for paper</span>
             </a>
         </li>
-
         <li>
             <a class="nav-link @if (Route::is('designation.create')) active @endif"
                 href="{{ route('designation.create') }}">
                 <i class="bi bi-person"></i>
                 <span>Designation</span>
+            </a>
+        </li>
+        <li>
+            <a class="nav-link @if (Route::is('editorial-board.create')) active @endif"
+                href="{{ route('editorial-board.create') }}">
+                <i class="bi bi-person"></i>
+                <span>Editorial Board</span>
             </a>
         </li>
 

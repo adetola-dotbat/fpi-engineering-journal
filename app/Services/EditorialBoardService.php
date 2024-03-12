@@ -3,10 +3,12 @@
 namespace App\Services;
 
 use App\Models\EditorialBoard;
+use App\Traits\FileHelper;
+use App\Traits\UploadImage;
+use Illuminate\Http\UploadedFile;
 
 class EditorialBoardService
 {
-
     public function __construct(protected EditorialBoard $editorialBoard)
     {
     }
@@ -18,6 +20,10 @@ class EditorialBoardService
     public function getEditorialBoardById($editorialBoard)
     {
         return $this->editorialBoard->findOrFail($editorialBoard);
+    }
+    public function store(array $data)
+    {
+        return $this->editorialBoard->create($data);
     }
     public function update($editorialBoard, array $data)
     {

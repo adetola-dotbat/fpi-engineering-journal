@@ -9,4 +9,9 @@ class EditorialBoard extends Model
 {
     use HasFactory;
     protected $guarded = ['id'];
+
+    public function designation()
+    {
+        return $this->belongsTo(Designation::class);
+    }
 }

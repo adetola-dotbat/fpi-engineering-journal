@@ -1,6 +1,6 @@
 @extends('administration.layout.app')
 @section('title')
-    Announcement
+    {{ $title_page }}
 @endsection
 @push('styles')
     <style>
@@ -20,7 +20,7 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="container mt-4">
-                            <h3>Announcement</h3>
+                            <h3>{{ $title_page }}</h3>
                             <br />
                             <!-- Nav pills -->
                             <ul class="nav nav-pills gap-3" role="tablist">

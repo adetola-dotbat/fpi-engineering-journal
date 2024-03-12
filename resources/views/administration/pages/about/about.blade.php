@@ -1,5 +1,7 @@
 @extends('administration.layout.app')
-
+@section('title')
+    {{ $title_page }}
+@endsection
 @section('content')
     <section class="section">
         <div class="row">
