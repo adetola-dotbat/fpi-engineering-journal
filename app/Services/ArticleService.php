@@ -10,7 +10,6 @@ class ArticleService
     public function __construct(protected Article $article)
     {
     }
-
     public function all()
     {
         return $this->article->get();
@@ -18,6 +17,13 @@ class ArticleService
     public function getArticleById($article)
     {
         return $this->article->findOrFail($article);
+    }
+    public function store(array $data)
+    {
+        if ($data) {
+            $data['publish_date'] = now();
+        }
+        return $this->article->create($data);
     }
     public function update($article, array $data)
     {

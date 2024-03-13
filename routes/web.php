@@ -2,9 +2,11 @@
 
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\AnnouncementController;
+use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\CallForPaperController;
 use App\Http\Controllers\DesignationController;
 use App\Http\Controllers\EditorialBoardController;
+use App\Http\Controllers\VolumeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,13 +24,23 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('about', AboutController::class)
-    ->only(['index', 'show', 'create', 'edit', 'store', 'update', 'destroy']);
-Route::resource('announcement', AnnouncementController::class)
-    ->only(['index', 'show', 'create', 'edit', 'store', 'update', 'destroy']);
-Route::resource('call-for-paper', CallForPaperController::class)
-    ->only(['index', 'show', 'create', 'edit', 'store', 'update', 'destroy']);
-Route::resource('designation', DesignationController::class)
-    ->only(['index', 'show', 'create', 'edit', 'store', 'update', 'destroy']);
-Route::resource('editorial-board', EditorialBoardController::class)
-    ->only(['index', 'show', 'create', 'edit', 'store', 'update', 'destroy']);
+Route::middleware(['auth'])->group(function () {
+    Route::resource('announcement', AnnouncementController::class)
+        ->only(['index', 'show', 'create', 'edit', 'store', 'update', 'destroy']);
+    Route::resource('about', AboutController::class)
+        ->only(['index', 'show', 'create', 'edit', 'store', 'update', 'destroy']);
+    Route::resource('call-for-paper', CallForPaperController::class)
+        ->only(['index', 'show', 'create', 'edit', 'store', 'update', 'destroy']);
+    Route::resource('designation', DesignationController::class)
+        ->only(['index', 'show', 'create', 'edit', 'store', 'update', 'destroy']);
+    Route::resource('editorial-board', EditorialBoardController::class)
+        ->only(['index', 'show', 'create', 'edit', 'store', 'update', 'destroy']);
+    Route::resource('volume', VolumeController::class)
+        ->only(['index', 'show', 'create', 'edit', 'store', 'update', 'destroy']);
+    Route::resource('article', ArticleController::class)
+        ->only(['index', 'show', 'create', 'edit', 'store', 'update', 'destroy']);
+});
+
+
+Auth::routes();
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

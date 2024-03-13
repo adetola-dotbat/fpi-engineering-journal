@@ -26,6 +26,7 @@ class AnnouncementController extends Controller
         $data = [
             'title_page' => 'Announcement',
             'announcements' => $this->announcementService->all(),
+            'user' => auth()->user(),
         ];
         return view('administration.pages.announcement.index', $data);
     }

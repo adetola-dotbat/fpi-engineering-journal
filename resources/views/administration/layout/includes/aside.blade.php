@@ -46,6 +46,18 @@
                 <span>Editorial Board</span>
             </a>
         </li>
+        <li>
+            <a class="nav-link @if (Route::is('volume.create')) active @endif" href="{{ route('volume.create') }}">
+                <i class="bi bi-person"></i>
+                <span>Volume</span>
+            </a>
+        </li>
+        <li>
+            <a class="nav-link @if (Route::is('article.create')) active @endif" href="{{ route('article.create') }}">
+                <i class="bi bi-person"></i>
+                <span>Article</span>
+            </a>
+        </li>
 
     </ul>
 </aside>

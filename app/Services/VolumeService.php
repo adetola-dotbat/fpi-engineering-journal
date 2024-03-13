@@ -19,6 +19,10 @@ class VolumeService
     {
         return $this->volume->findOrFail($volume);
     }
+    public function store(array $data)
+    {
+        $this->volume->create($data);
+    }
     public function update($volume, array $data)
     {
         $volume = $this->getVolumeById($volume);

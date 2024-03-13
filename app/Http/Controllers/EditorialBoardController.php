@@ -35,13 +35,12 @@ class EditorialBoardController extends Controller
     public function store(EditorialBoardRequest $request)
     {
         $data = $request->validated();
+        // Handle the image upload using a dedicated method or service
+        if ($request->hasFile('image')) {
+            $data['image'] = FileHelper::uploadsImage('image', $request, 'images/about');
+        }
 
-    // Handle the image upload using a dedicated method or service
-    if ($request->hasFile('image')) {
-        $data['image'] = FileHelper::uploadsImage('image', $request, 'images/about');
-    }
-
-    $this->editorialBoardService->store($data);
+        $this->editorialBoardService->store($data);
         return redirect()->route('editorial-board.create')->with('success', 'Editorial member added successfully');
     }
     public function show($editorial)
