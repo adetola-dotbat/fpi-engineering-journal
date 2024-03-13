@@ -58,6 +58,12 @@
                 <span>Article</span>
             </a>
         </li>
+        <li>
+            <a class="nav-link @if (Route::is('quick-link.create')) active @endif" href="{{ route('quick-link.create') }}">
+                <i class="bi bi-person"></i>
+                <span>Quick link</span>
+            </a>
+        </li>
 
     </ul>
 </aside>

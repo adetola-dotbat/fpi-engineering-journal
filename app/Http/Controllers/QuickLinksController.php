@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\QuickLinkRequest;
 use App\Services\QuickLinksService;
 use Illuminate\Http\Request;
 
@@ -20,33 +21,33 @@ class QuickLinksController extends Controller
     public function create()
     {
         $data = [
-            'title_page' => 'Designation',
-            'designations' => $this->quickLinksService->all(),
+            'title_page' => 'Quick links',
+            'quickLinks' => $this->quickLinksService->all(),
         ];
-        return view('administration.pages.designation.index', $data);
+        return view('administration.pages.quick-link.index', $data);
     }
-    public function store(DesignationRequest $request)
+    public function store(QuickLinkRequest $request)
     {
         $this->quickLinksService->store($request->validated());
-        return redirect()->back()->with('success', 'Designation successfully added');
+        return redirect()->back()->with('success', 'Quick link successfully added');
     }
-    public function edit($designation)
+    public function edit($quickLink)
     {
         $data = [
-            'title_page' => 'Edit Designation',
-            'designations' => $this->quickLinksService->all(),
-            'designation' => $this->quickLinksService->getDesignationById($designation),
+            'title_page' => 'Edit quickLink',
+            'quickLinks' => $this->quickLinksService->all(),
+            'quickLink' => $this->quickLinksService->getQuickLinkById($quickLink),
         ];
-        return view('administration.pages.designation.edit', $data);
+        return view('administration.pages.quick-link.edit', $data);
     }
-    public function update(DesignationRequest $request, $designation)
+    public function update(QuickLinkRequest $request, $quickLink)
     {
-        $this->quickLinksService->update($designation, $request->validated());
-        return redirect()->route('designation.create')->with('success', 'Designation updated successfully');
+        $this->quickLinksService->update($quickLink, $request->validated());
+        return redirect()->route('quick-link.create')->with('success', 'Quick link updated successfully');
     }
-    public function destroy($designation)
+    public function destroy($quickLink)
     {
-        $this->quickLinksService->destroy($designation);
-        return redirect()->route('designation.create')->with('success', 'Designation deleted successfully');
+        $this->quickLinksService->destroy($quickLink);
+        return redirect()->route('quick-link.create')->with('success', 'Quick link deleted successfully');
     }
 }

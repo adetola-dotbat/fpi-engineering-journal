@@ -6,6 +6,7 @@ use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\CallForPaperController;
 use App\Http\Controllers\DesignationController;
 use App\Http\Controllers\EditorialBoardController;
+use App\Http\Controllers\QuickLinksController;
 use App\Http\Controllers\VolumeController;
 use Illuminate\Support\Facades\Route;
 
@@ -38,6 +39,8 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('volume', VolumeController::class)
         ->only(['index', 'show', 'create', 'edit', 'store', 'update', 'destroy']);
     Route::resource('article', ArticleController::class)
+        ->only(['index', 'show', 'create', 'edit', 'store', 'update', 'destroy']);
+    Route::resource('quick-link', QuickLinksController::class)
         ->only(['index', 'show', 'create', 'edit', 'store', 'update', 'destroy']);
 });
 

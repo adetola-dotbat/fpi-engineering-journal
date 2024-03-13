@@ -19,6 +19,10 @@ class QuickLinksService
     {
         return $this->quickLink->findOrFail($quickLink);
     }
+    public function store(array $data)
+    {
+        return $this->quickLink->create($data);
+    }
     public function update($quickLink, array $data)
     {
         $quickLink = $this->getQuickLinkById($quickLink);
