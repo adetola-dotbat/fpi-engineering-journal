@@ -8,10 +8,9 @@
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title text-black">{{ $title_page }}</h5>
-                    <form action="{{ route('editorial-board.update', $editorial->id) }}" method="POST"
-                        enctype="multipart/form-data">
+                    <form action="{{ route('editorial-board.update', $editorial->id) }}" method="POST">
                         @csrf
-                        @method('post')
+                        @method('put')
                         <div class="row">
                             <div class="mb-3 col-md-6">
                                 <label for="fullname" class="form-label">Fullname</label>
@@ -52,13 +51,9 @@
                                 <input type="text" class="form-control" id="position" value="{{ $editorial->position }}"
                                     name="position">
                             </div>
-                            <div class="mb-3 col-md-12">
-                                <label for="image" class="form-label">Image</label>
-                                <a href="{{ $editorial->image }}">Image</a>
-                                {{-- <input type="file" class="form-control" id="image" name="image"> --}}
-                            </div>
                         </div>
-                        <div class="float-right">
+                        <div class="d-flex justify-content-between">
+                            <a href="{{ route('editorial-board.create') }}" class="btn btn-danger"> Cancle</a>
                             <button type="submit" class="btn btn-success">Update</button>
                         </div>
                     </form>

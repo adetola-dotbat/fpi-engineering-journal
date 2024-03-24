@@ -21,6 +21,7 @@ class AboutController extends Controller
     public function create()
     {
         $data = [
+            'title_page' => 'About Us',
             'about' => $this->aboutService->first()
         ];
         return view('administration.pages.about.about', $data);

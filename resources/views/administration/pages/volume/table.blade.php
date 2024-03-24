@@ -30,7 +30,7 @@
                 </td>
                 <td>
                     <div>
-                        <a href="{{ route('volume.edit', $volume->id) }}">
+                        <a href="{{ route('volume.show', $volume->id) }}">
                             <i class="bi bi-pencil text-success"></i>
                         </a>
                         <form action="{{ route('volume.destroy', $volume->id) }}" method="POST"

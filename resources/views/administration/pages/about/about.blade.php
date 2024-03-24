@@ -35,16 +35,16 @@
                             </div>
                             <div class="mb-3 col-md-6">
                                 <label for="description" class="form-label">Description</label>
-                                <textarea class="form-control" id="description" name="description"> {{ $about->description }} </textarea>
+                                <textarea rows="10" class="form-control" id="description" name="description"> {{ $about->description }} </textarea>
                             </div>
                             <div class="mb-3 col-md-6">
                                 <label for="welcome_message" class="form-label">Welcome Message</label>
-                                <textarea class="form-control" id="welcome_message" name="welcome_message"> {{ $about->welcome_message }} </textarea>
+                                <textarea rows="10" class="form-control" id="welcome_message" name="welcome_message"> {{ $about->welcome_message }} </textarea>
                             </div>
-                            <div class="mb-3 col-md-12">
+                            {{-- <div class="mb-3 col-md-12">
                                 <label for="image" class="form-label">Image</label>
                                 <input type="file" class="form-control" id="image" name="image">
-                            </div>
+                            </div> --}}
                         </div>
                         <div class="float-right">
                             <button type="submit" class="btn btn-success">Update</button>

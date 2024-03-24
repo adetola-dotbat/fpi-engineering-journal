@@ -32,6 +32,12 @@
                                             @csrf
                                             @method('put')
                                             <div class="form-group mb-3">
+                                                <div class="col-sm-10">
+                                                    <img src="{{ asset($volume->image) }}" alt=""
+                                                        style="width: 10rem">
+                                                </div>
+                                            </div>
+                                            <div class="form-group mb-3">
                                                 <label for="title" class="col-sm-2 col-form-label">Title</label>
                                                 <div class="col-sm-10">
                                                     <input type="text" value="{{ $volume->title }}"
@@ -40,12 +46,6 @@
                                                     @error('title')
                                                         <div class="invalid-feedback">{{ $message }}</div>
                                                     @enderror
-                                                </div>
-                                            </div>
-                                            <div class="form-group mb-3">
-                                                <label for="image" class="col-sm-2 col-form-label">Image</label>
-                                                <div class="col-sm-10">
-                                                    <img src="{{ asset($volume->image) }}" alt="">
                                                 </div>
                                             </div>
                                             <div class="form-group mb-3">
@@ -61,7 +61,7 @@
 
                                             <div class="form-group row">
                                                 <div class="col-sm-10">
-                                                    <button class="btn btn-success" type="submit">Save</button>
+                                                    <button class="btn btn-success" type="submit">Update</button>
                                                 </div>
                                             </div>
                                         </form>

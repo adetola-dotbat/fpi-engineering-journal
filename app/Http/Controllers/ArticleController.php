@@ -43,10 +43,21 @@ class ArticleController extends Controller
     {
         $data = [
             'title_page' => 'Edit Article',
+            'volumes' => $this->volumeService->all(),
             'articles' => $this->articleService->all(),
             'article' => $this->articleService->getArticleById($article),
         ];
         return view('administration.pages.article.edit', $data);
+    }
+    public function show($article)
+    {
+        $data = [
+            'title_page' => 'Article details',
+            'articles' => $this->articleService->all(),
+            'volumes' => $this->volumeService->all(),
+            'article' => $this->articleService->getArticleById($article),
+        ];
+        return view('administration.pages.article.view', $data);
     }
     public function update(Request $request, $article)
     {

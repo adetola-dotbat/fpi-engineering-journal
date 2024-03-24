@@ -28,6 +28,7 @@ class QuickLinksController extends Controller
     }
     public function store(QuickLinkRequest $request)
     {
+
         $this->quickLinksService->store($request->validated());
         return redirect()->back()->with('success', 'Quick link successfully added');
     }

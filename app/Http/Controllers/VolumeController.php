@@ -32,7 +32,6 @@ class VolumeController extends Controller
     public function store(VolumeRequest $request)
     {
         $data = $request->validated();
-        // Handle the image upload using a dedicated method or service
         if ($request->hasFile('image')) {
             $data['image'] = FileHelper::uploadsImage('image', $request, 'images/volume');
         }
@@ -48,9 +47,20 @@ class VolumeController extends Controller
         ];
         return view('administration.pages.volume.edit', $data);
     }
+    public function show($volume)
+    {
+        $data = [
+            'title_page' => 'Details',
+            'volume' => $this->volumeService->getVolumeById($volume),
+        ];
+        return view('administration.pages.volume.view', $data);
+    }
     public function update(Request $request, $volume)
     {
         $data = $request->all();
+        if ($request->hasFile('image')) {
+            $data['image'] = FileHelper::uploadsImage('image', $request, 'images/volume');
+        }
         $status = $request->input('status');
         if ($status === null || $status == StatusEnum::PENDING) {
             $data['status'] = StatusEnum::PENDING;

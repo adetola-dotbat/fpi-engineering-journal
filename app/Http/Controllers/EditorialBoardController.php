@@ -37,7 +37,7 @@ class EditorialBoardController extends Controller
         $data = $request->validated();
         // Handle the image upload using a dedicated method or service
         if ($request->hasFile('image')) {
-            $data['image'] = FileHelper::uploadsImage('image', $request, 'images/about');
+            $data['image'] = FileHelper::uploadsImage('image', $request, 'images/editors');
         }
 
         $this->editorialBoardService->store($data);
@@ -57,12 +57,16 @@ class EditorialBoardController extends Controller
             'title_page' => 'Edit Editorial Board',
             'editorials' => $this->editorialBoardService->all(),
             'editorial' => $this->editorialBoardService->getEditorialBoardById($editorial),
+            'designations' => $this->designationService->all(),
         ];
-        return view('admin.pages.editorial.edit', $data);
+        return view('administration.pages.editorial-board.edit', $data);
     }
     public function update(Request $request, $editorial)
     {
         $data = $request->all();
+        if ($request->hasFile('image')) {
+            $data['image'] = FileHelper::uploadsImage('image', $request, 'images/editors');
+        }
         $status = $request->input('status');
         if ($status === null || $status == StatusEnum::PENDING) {
             $data['status'] = StatusEnum::PENDING;
@@ -70,11 +74,11 @@ class EditorialBoardController extends Controller
             $data['status'] = StatusEnum::ACTIVATE;
         }
         $this->editorialBoardService->update($editorial, $data);
-        return redirect()->back();
+        return redirect()->route('editorial-board.create')->with('success', 'Editor updated successfully');
     }
     public function destroy($editorial)
     {
         $this->editorialBoardService->destroy($editorial);
-        return redirect()->back();
+        return redirect()->route('editorial-board.create')->with('success', 'Editor deleted successfully');
     }
 }

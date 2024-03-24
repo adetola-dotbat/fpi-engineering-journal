@@ -25,6 +25,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
+
 Route::middleware(['auth'])->group(function () {
     Route::resource('announcement', AnnouncementController::class)
         ->only(['index', 'show', 'create', 'edit', 'store', 'update', 'destroy']);
