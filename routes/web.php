@@ -6,6 +6,7 @@ use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\CallForPaperController;
 use App\Http\Controllers\DesignationController;
 use App\Http\Controllers\EditorialBoardController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\QuickLinksController;
 use App\Http\Controllers\VolumeController;
 use Illuminate\Support\Facades\Route;
@@ -21,13 +22,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('myhome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 
 
 Route::middleware(['auth'])->group(function () {
+    Route::get('/', [HomeController::class, 'index'])->name('dashboard');
     Route::resource('announcement', AnnouncementController::class)
         ->only(['index', 'show', 'create', 'edit', 'store', 'update', 'destroy']);
     Route::resource('about', AboutController::class)
@@ -45,7 +47,6 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('quick-link', QuickLinksController::class)
         ->only(['index', 'show', 'create', 'edit', 'store', 'update', 'destroy']);
 });
-
 
 Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

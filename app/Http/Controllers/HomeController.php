@@ -23,6 +23,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $data = [
+            'title_page' => 'Dashboard',
+        ];
+        return view('administration.pages.dashboard.index', $data);
     }
 }
