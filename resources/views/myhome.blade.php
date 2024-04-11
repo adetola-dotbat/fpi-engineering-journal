@@ -1,82 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description"
-        content="Cuba admin is super flexible, powerful, clean &amp; modern responsive bootstrap 5 admin template with unlimited possibilities.">
-    <meta name="keywords"
-        content="admin template, Cuba admin template, dashboard template, flat admin template, responsive admin template, web app">
-    <meta name="author" content="pixelstrap">
-    <title>Cuba - Premium Admin Template</title>
-    <link href="{{ asset('assets/images/logo.png') }}" rel="icon" />
-    <link href="{{ asset('assets/images/logo.png') }}" rel="apple-touch-icon" />
-    @vite('resources/css/app.css')
-    @stack('styles')
+    <title>Landing Page</title>
+    @vite(['resources/css/tailwind.css'])
 </head>
+<body class="font-sans antialiased text-gray-900">
 
-<body>
-    <!-- login page start-->
-    <div class="container-fluid p-0">
-        <div class="row m-0">
-            <div class="col-12 p-0">
-                <div class="login-card login-dark">
-                    <div>
-                        <div><a class="logo" href="index.html"><img class="img-fluid for-light"
-                                    src="../assets/images/logo/logo.png" alt="looginpage"><img
-                                    class="img-fluid for-dark" src="../assets/images/logo/logo_dark.png"
-                                    alt="looginpage"></a></div>
-                        <div class="login-main">
-                            <form class="theme-form">
-                                <h4>Sign in to account</h4>
-                                <p>Enter your email & password to login</p>
-                                <div class="form-group">
-                                    <label class="col-form-label">Email Address</label>
-                                    <input class="form-control" type="email" required=""
-                                        placeholder="Test@gmail.com">
-                                </div>
-                                <div class="form-group">
-                                    <label class="col-form-label">Password</label>
-                                    <div class="form-input position-relative">
-                                        <input class="form-control" type="password" name="login[password]"
-                                            required="" placeholder="*********">
-                                        <div class="show-hide"><span class="show"> </span></div>
-                                    </div>
-                                </div>
-                                <div class="form-group mb-0">
-                                    <div class="checkbox p-0">
-                                        <input id="checkbox1" type="checkbox">
-                                        <label class="text-muted" for="checkbox1">Remember password</label>
-                                    </div><a class="link" href="forget-password.html">Forgot password?</a>
-                                    <div class="text-end mt-3">
-                                        <button class="btn btn-primary btn-block w-100" type="submit">Sign in</button>
-                                    </div>
-                                </div>
-                                <h6 class="text-muted mt-4 or">Or Sign in with</h6>
-                                <div class="social mt-4">
-                                    <div class="btn-showcase"><a class="btn btn-light"
-                                            href="https://www.linkedin.com/login" target="_blank"><i
-                                                class="txt-linkedin" data-feather="linkedin"></i> LinkedIn </a><a
-                                            class="btn btn-light" href="https://twitter.com/login?lang=en"
-                                            target="_blank"><i class="txt-twitter"
-                                                data-feather="twitter"></i>twitter</a><a class="btn btn-light"
-                                            href="https://www.facebook.com/" target="_blank"><i class="txt-fb"
-                                                data-feather="facebook"></i>facebook</a></div>
-                                </div>
-                                <p class="mt-4 mb-0 text-center">Don't have account?<a class="ms-2"
-                                        href="sign-up.html">Create Account</a></p>
-                            </form>
-                        </div>
-                    </div>
-                </div>
+<!-- Navigation -->
+<nav class="bg-gray-800 text-white p-4">
+    <div class="container mx-auto flex justify-between items-center">
+        <a href="#" class="text-xl font-semibold">Brand</a>
+        <div>
+            <a href="#" class="px-4 hover:text-gray-300">Home</a>
+            <a href="#" class="px-4 hover:text-gray-300">About</a>
+            <a href="#" class="px-4 hover:text-gray-300">Services</a>
+            <a href="#" class="px-4 hover:text-gray-300">Contact</a>
+        </div>
+    </div>
+</nav>
+
+<!-- Hero Section -->
+<section class="bg-gray-200 text-gray-800 py-20">
+    <div class="container mx-auto flex flex-col items-center">
+        <h1 class="text-5xl font-bold mb-4">Welcome to Our Website</h1>
+        <p class="text-xl mb-8">Discover our services and offers.</p>
+        <a href="#" class="bg-blue-500 text-white px-6 py-3 rounded hover:bg-blue-600">Get Started</a>
+    </div>
+</section>
+
+<!-- Features Section -->
+<section class="container mx-auto py-20">
+    <h2 class="text-3xl text-center font-bold mb-12">Our Features</h2>
+    <div class="flex justify-around flex-wrap">
+        <div class="max-w-sm">
+            <div class="bg-white p-6 rounded-lg shadow-lg">
+                <h3 class="text-xl mb-4 font-semibold">Feature One</h3>
+                <p class="text-gray-700">This is a description of the first feature. It's really awesome.</p>
             </div>
         </div>
-        @vite('resources/js/app.js')
-
-        @stack('scripts')
+        <div class="max-w-sm">
+            <div class="bg-white p-6 rounded-lg shadow-lg">
+                <h3 class="text-xl mb-4 font-semibold">Feature Two</h3>
+                <p class="text-gray-700">This is a description of the second feature. It's even more awesome.</p>
+            </div>
+        </div>
+        <div class="max-w-sm">
+            <div class="bg-white p-6 rounded-lg shadow-lg">
+                <h3 class="text-xl mb-4 font-semibold">Feature Three</h3>
+                <p class="text-gray-700">This is a description of the third feature. It's the most awesome.</p>
+            </div>
+        </div>
     </div>
-</body>
+</section>
 
+<!-- Footer -->
+<footer class="bg-gray-800 text-white p-4 text-center">
+    <p>Copyright &copy; 2024 Your Brand</p>
+</footer>
+
+</body>
 </html>

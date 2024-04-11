@@ -22,14 +22,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+Route::get('/', function () {
+    return view('myhome');
+});
 
 
 
 Route::middleware(['auth'])->group(function () {
-    Route::get('/', [HomeController::class, 'index'])->name('dashboard');
+    Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard');
     Route::resource('announcement', AnnouncementController::class)
         ->only(['index', 'show', 'create', 'edit', 'store', 'update', 'destroy']);
     Route::resource('about', AboutController::class)
