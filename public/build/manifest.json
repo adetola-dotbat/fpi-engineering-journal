@@ -4,9 +4,9 @@
     "src": "resources/js/app.js",
     "isEntry": true
   },
-  "resources/sass/app.scss": {
+  "resources/css/app.css": {
     "file": "assets/app-D-sv12UV.css",
-    "src": "resources/sass/app.scss",
+    "src": "resources/css/app.ccss",
     "isEntry": true
   }
 }
