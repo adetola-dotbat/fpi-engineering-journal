@@ -14,9 +14,10 @@ class AboutController extends Controller
     public function index()
     {
         $data = [
+            'title' => 'About us',
             'about' => $this->aboutService->first()
         ];
-        // return view('user.pages.about', $data);
+        return view('user.pages.about', $data);
     }
     public function create()
     {

@@ -19,6 +19,9 @@ class VolumeService
     {
         return $this->volume->findOrFail($volume);
     }
+    public function getLatestVolume(){
+        return $this->volume->latest()->first();
+    }
     public function store(array $data)
     {
         $this->volume->create($data);

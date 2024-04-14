@@ -22,31 +22,38 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+Route::get('/test', function () {
     return view('myhome');
 });
 
-
-
+Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::resource('announcement', AnnouncementController::class)->only(['index']);
+Route::resource('about', AboutController::class)->only(['index']);
+Route::resource('call-for-paper', CallForPaperController::class)->only(['index']);
+Route::resource('designation', DesignationController::class)->only(['index']);
+Route::resource('editorial-board', EditorialBoardController::class)->only(['index']);
+Route::resource('volume', VolumeController::class)->only(['index']);
+Route::resource('article', ArticleController::class)->only(['index']);
+Route::resource('quick-link', QuickLinksController::class)->only(['index']);
 Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard');
     Route::resource('announcement', AnnouncementController::class)
-        ->only(['index', 'show', 'create', 'edit', 'store', 'update', 'destroy']);
+        ->only(['show', 'create', 'edit', 'store', 'update', 'destroy']);
     Route::resource('about', AboutController::class)
-        ->only(['index', 'show', 'create', 'edit', 'store', 'update', 'destroy']);
+        ->only(['show', 'create', 'edit', 'store', 'update', 'destroy']);
     Route::resource('call-for-paper', CallForPaperController::class)
-        ->only(['index', 'show', 'create', 'edit', 'store', 'update', 'destroy']);
+        ->only(['show', 'create', 'edit', 'store', 'update', 'destroy']);
     Route::resource('designation', DesignationController::class)
-        ->only(['index', 'show', 'create', 'edit', 'store', 'update', 'destroy']);
+        ->only(['show', 'create', 'edit', 'store', 'update', 'destroy']);
     Route::resource('editorial-board', EditorialBoardController::class)
-        ->only(['index', 'show', 'create', 'edit', 'store', 'update', 'destroy']);
+        ->only(['show', 'create', 'edit', 'store', 'update', 'destroy']);
     Route::resource('volume', VolumeController::class)
-        ->only(['index', 'show', 'create', 'edit', 'store', 'update', 'destroy']);
+        ->only(['show', 'create', 'edit', 'store', 'update', 'destroy']);
     Route::resource('article', ArticleController::class)
-        ->only(['index', 'show', 'create', 'edit', 'store', 'update', 'destroy']);
+        ->only(['show', 'create', 'edit', 'store', 'update', 'destroy']);
     Route::resource('quick-link', QuickLinksController::class)
-        ->only(['index', 'show', 'create', 'edit', 'store', 'update', 'destroy']);
+        ->only(['show', 'create', 'edit', 'store', 'update', 'destroy']);
 });
 
 Auth::routes();
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

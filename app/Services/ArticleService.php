@@ -20,6 +20,7 @@ class ArticleService
     }
     public function store(array $data)
     {
+        // dd($data);
         if ($data) {
             $data['publish_date'] = now();
         }

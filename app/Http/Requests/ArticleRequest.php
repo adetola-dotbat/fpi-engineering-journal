@@ -12,7 +12,7 @@ class ArticleRequest extends BaseRequest
             'volume_id' => 'required|exists:volumes,id',
             'title' => 'required|string|max:255',
             'abstract' => 'nullable|string|max:1000',
-            'file' => 'nullable|file|image|max:10240',
+            'file' => 'nullable|file|image',
             'pages' => 'nullable|string|max:255',
             'author' => 'nullable|string|max:255',
             'publish_date' => 'nullable|string|max:255',

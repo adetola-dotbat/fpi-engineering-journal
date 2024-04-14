@@ -10,8 +10,8 @@ class VolumeRequest extends BaseRequest
     {
         return [
             'title' => 'required|string|max:255',
-            'description' => 'nullable|string',
-            'image' => 'nullable|file|image|max:10240', // Max 10MB
+            // 'description' => 'nullable|string',
+            // 'image' => 'nullable|file|image|max:10240', // Max 10MB
         ];
     }
 }

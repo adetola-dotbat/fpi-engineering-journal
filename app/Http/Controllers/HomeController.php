@@ -2,6 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Services\AboutService;
+use App\Services\AnnouncementService;
+use App\Services\ArticleService;
+use App\Services\EditorialBoardService;
+use App\Services\VolumeService;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -11,9 +16,8 @@ class HomeController extends Controller
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(protected AnnouncementService $announcementService, protected AboutService $aboutService, protected VolumeService $volumeService, protected EditorialBoardService $editorialBoardService, protected ArticleService $articleService)
     {
-        $this->middleware('auth');
     }
 
     /**
@@ -23,9 +27,20 @@ class HomeController extends Controller
      */
     public function index()
     {
+
         $data = [
-            'title_page' => 'Dashboard',
+            'announcements' => $this->announcementService->all(),
+            'about' => $this->aboutService->first(),
+            'volumes' => $this->volumeService->all(),
+            'volume' => $this->volumeService->getLatestVolume(),
+            'editor' =>$this->editorialBoardService->getEditorInChief(),
         ];
-        return view('administration.pages.dashboard.index', $data);
+        // dd($data['about']);
+        if(auth()->user()){
+            $data['title_page'] = 'Dashboard';
+            return view('administration.pages.dashboard.index', $data);
+        }
+        return view('user.pages.index', $data);
+
     }
 }

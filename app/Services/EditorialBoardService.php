@@ -21,6 +21,9 @@ class EditorialBoardService
     {
         return $this->editorialBoard->findOrFail($editorialBoard);
     }
+    public function getEditorInChief(){
+        return $this->editorialBoard->first();
+    }
     public function store(array $data)
     {
         return $this->editorialBoard->create($data);
