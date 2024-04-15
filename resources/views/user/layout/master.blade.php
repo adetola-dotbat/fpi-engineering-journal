@@ -8,11 +8,6 @@
     @vite(['resources/css/tailwind.css', 'resources/js/tailwind.js'])
     {{-- <link rel="stylesheet" href="main.css" /> --}}
     <script src="https://cdn.tailwindcss.com"></script>
-
-    <!-- swiper css link -->
-
-    <link rel="stylesheet" href="style/swiper-bundle.min.css" />
-
     <style>
         .header-fixed {
             position: fixed;

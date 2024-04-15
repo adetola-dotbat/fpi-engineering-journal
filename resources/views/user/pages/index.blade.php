@@ -42,7 +42,7 @@
             <div class="flex flex-col justify-center space-y-6 text-center md:text-left md:w-8/12 lg:space-y-9">
                 <h1 class="text-2xl font-bold sm:text-3xl">About Us</h1>
                 <p class="text-md sm:text-lg text-darkGrayishBlue">
-                    {{ $about->description }}
+                    {{ $about->welcome_message }}
                 </p>
                 <div>
                     <button

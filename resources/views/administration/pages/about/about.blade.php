@@ -39,7 +39,7 @@
                             </div>
                             <div class="mb-3 col-md-6">
                                 <label for="welcome_message" class="form-label">Welcome Message</label>
-                                <textarea rows="10" class="form-control" id="welcome_message" name="welcome_message"> {{ $about->welcome_message }} </textarea>
+                                <textarea rows="10" maxlength="300" class="form-control" id="welcome_message" name="welcome_message"> {{ $about->welcome_message }} </textarea>
                             </div>
                             {{-- <div class="mb-3 col-md-12">
                                 <label for="image" class="form-label">Image</label>
