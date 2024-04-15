@@ -65,6 +65,12 @@
             </a>
         </li>
         <li>
+            <a class="nav-link @if (Route::is('guideline.create')) active @endif" href="{{ route('guideline.create') }}">
+                <i class="bi bi-menu-button-wide"></i>
+                <span>Guideline</span>
+            </a>
+        </li>
+        <li>
             <a class="nav-link @if (Route::is('quick-link.create')) active @endif" href="{{ route('quick-link.create') }}">
                 <i class="bi bi-link"></i>
                 <span>Quick link</span>
