@@ -1,6 +1,6 @@
 @if (!\Route::is('home'))
-    <div class="absolute h-full -left-20 -top-28">
-        <div class="bg-myGold rounded-full blur-[100px] w-[20rem] h-[20rem] md:w-[27rem] md:h-[20rem]"></div>
+    <div class="absolute -left-20 -top-19">
+        <div class="bg-myGold rounded-full blur-[100px] w-[20rem] h-[20rem] md:w-[27rem] md:h-[10rem]"></div>
     </div>
    @include('user.layout.inc_nav')
     <div class="bg-articleColor">
@@ -10,7 +10,7 @@
                     {{ $title }}
                 </h3>
                 <p class="text-2xl pt-3">
-                    <a href="{{ route('home') }}">Home</a> > <a class="text-fpiGreen">About us</a>
+                    <a href="{{ route('home') }}">Home</a> > <a class="text-fpiGreen">{{ $title }}</a>
                 </p>
             </div>
         </div>

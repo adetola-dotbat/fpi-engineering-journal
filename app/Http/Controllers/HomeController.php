@@ -29,7 +29,7 @@ class HomeController extends Controller
     {
 
         $data = [
-            'announcements' => $this->announcementService->all(),
+            'announcements' => $this->announcementService->getAllActiveAnnouncement(),
             'about' => $this->aboutService->first(),
             'volumes' => $this->volumeService->all(),
             'volume' => $this->volumeService->getLatestVolume(),

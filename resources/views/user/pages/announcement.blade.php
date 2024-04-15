@@ -5,15 +5,15 @@
         <!-- right section -->
         <div class="text-center space-y-6 md:text-left md:w-8/12 lg:w-8/12">
             <h2 class="font-bold text-3xl">
-                A Brief Introduction
+                {{ $announcement->title }}
             </h2>
-            <p class="text-lg">
-               {{$about->description}}
+            <p class="text-gray-500 text-lg ">
+               {{$announcement->description}}
             </p>
         </div>
         <!-- right section end-->
         <!-- left section -->
-     @include('user.layout.inv_notification_bar')
+       @include('user.layout.inv_notification_bar')
     </div>
         <!-- left section end -->
     </div>

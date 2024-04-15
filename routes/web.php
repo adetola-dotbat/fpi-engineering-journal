@@ -29,7 +29,7 @@ Route::get('/test', function () {
 });
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
-Route::resource('announcement', AnnouncementController::class)->only(['index']);
+Route::resource('announcement', AnnouncementController::class)->only(['index','show']);
 Route::resource('about', AboutController::class)->only(['index']);
 Route::resource('call-for-paper', CallForPaperController::class)->only(['index']);
 Route::resource('designation', DesignationController::class)->only(['index']);
@@ -42,7 +42,7 @@ Route::resource('guideline', GuidelineController::class)->only(['index']);
 Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard');
     Route::resource('announcement', AnnouncementController::class)
-        ->only(['show', 'create', 'edit', 'store', 'update', 'destroy']);
+        ->only(['create', 'edit', 'store', 'update', 'destroy']);
     Route::resource('about', AboutController::class)
         ->only(['show', 'create', 'edit', 'store', 'update', 'destroy']);
     Route::resource('call-for-paper', CallForPaperController::class)

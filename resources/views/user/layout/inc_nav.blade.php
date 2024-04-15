@@ -52,8 +52,6 @@
                     class='hover:text-fpiGreen @if (Route::is('article.index')) text-fpiGreen @endif font-semibold text-[15px] block'>Aritcles</a></li>
             <li class='max-lg:border-b max-lg:py-2'><a href='{{ route('editorial-board.index') }}'
                     class='hover:text-fpiGreen @if (Route::is('editorial-board.index')) text-fpiGreen @endif font-semibold text-[15px] block'>Editors</a></li>
-            <li class='max-lg:border-b max-lg:py-2'><a href='{{ route('announcement.index') }}'
-                    class='hover:text-fpiGreen @if (Route::is('announcement.index')) text-fpiGreen @endif font-semibold text-[15px] block'>Anouncement</a></li>
             <li class='max-lg:border-b max-lg:py-2'><a href='{{ route('about.index') }}'
                     class='hover:text-fpiGreen @if (Route::is('about.index')) text-fpiGreen @endif font-semibold text-[15px] block'>Contact</a></li>
         </ul>

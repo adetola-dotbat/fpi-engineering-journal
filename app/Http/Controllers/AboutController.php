@@ -4,18 +4,20 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\AboutRequest;
 use App\Services\AboutService;
+use App\Services\AnnouncementService;
 use Illuminate\Http\Request;
 
 class AboutController extends Controller
 {
-    public function __construct(protected AboutService $aboutService)
+    public function __construct(protected AboutService $aboutService, protected AnnouncementService $announcementService)
     {
     }
     public function index()
     {
         $data = [
             'title' => 'About us',
-            'about' => $this->aboutService->first()
+            'about' => $this->aboutService->first(),
+            'announcements' => $this->announcementService->getAllActiveAnnouncement(),
         ];
         return view('user.pages.about', $data);
     }

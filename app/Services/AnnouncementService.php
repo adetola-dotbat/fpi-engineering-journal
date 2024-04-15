@@ -5,6 +5,7 @@ namespace App\Services;
 use App\Enums\StatusEnum;
 use App\Models\Announcement;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Str;
 
 class AnnouncementService
 {
@@ -17,8 +18,18 @@ class AnnouncementService
     {
         return $this->announcement->get();
     }
+    public function getAllActiveAnnouncement()
+    {
+        return $this->announcement->where('status', StatusEnum::ACTIVATE)->latest()->get();
+    }
+    public function getAnnouncementBySlug($announcement){
+        return $this->announcement->where('slug', $announcement)->first();
+    }
     public function store(array $data)
     {
+        if (isset($data['title'])) {
+            $data['slug'] = Str::slug($data['title']);
+        }
         $data['status'] = $data['status'] == StatusEnum::PENDING ? StatusEnum::PENDING : StatusEnum::ACTIVATE;
         return $this->announcement->create($data);
     }
@@ -28,7 +39,9 @@ class AnnouncementService
     }
     public function update(int $announcement, array $data)
     {
-        // dd($data);
+        if (isset($data['title'])) {
+            $data['slug'] = Str::slug($data['title']);
+        }
         $announcement = $this->getAnnouncementById($announcement);
         return $announcement->update($data);
     }

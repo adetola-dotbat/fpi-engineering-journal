@@ -16,9 +16,10 @@ class AnnouncementController extends Controller
     public function index()
     {
         $data = [
+            'title' => 'Announcement',
             'announcements' => $this->announcementService->all(),
         ];
-        // return view('user.pages.index', $data);
+        return view('user.pages.announcement', $data);
     }
 
     public function create()
@@ -29,6 +30,14 @@ class AnnouncementController extends Controller
             'user' => auth()->user(),
         ];
         return view('administration.pages.announcement.index', $data);
+    }
+    public function show($announcement){
+        $data = [
+            'title' => 'Announcement',
+            'announcements' => $this->announcementService->getAllActiveAnnouncement(),
+            'announcement' => $this->announcementService->getAnnouncementBySlug($announcement),
+        ];
+        return view('user.pages.announcement', $data);
     }
     public function store(AnnouncementRequest $request)
     {

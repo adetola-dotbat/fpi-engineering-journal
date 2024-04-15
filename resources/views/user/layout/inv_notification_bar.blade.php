@@ -3,15 +3,16 @@
         <h1 class="bg-fpiGreen p-2 w-[90%] text-2xl text-center mx-auto text-white font-bold">
             Notice Board
         </h1>
-        <ul class="list-disc w-[55%] mx-auto mt-4 font-semibold">
+        <ul class="list-disc w-[55%] mx-auto mt-4 font-semibold text-fpiGreen">
+            @forelse ($announcements as $anouncement )
             <li>
-                Lorem Ipsum is simply dummy text, Lorem Ipsum is simply
-                dummy text.
+                <a href="{{ route('announcement.show', $anouncement->slug) }}" class="underline">
+                    {{ $anouncement->title }}
+                </a>
             </li>
-            <li>of the printing and typesetting</li>
-            <li>industry. Lorem Ipsum has been</li>
-            <li>the industry's standard dummy</li>
-            <li>text ever since the 1550s, when an unknown</li>
+            @empty
+                <h4>No Announcement</h4>
+            @endforelse
         </ul>
     </div>
     <div class="md:text-sm">

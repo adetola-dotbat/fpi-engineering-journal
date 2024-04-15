@@ -7,7 +7,7 @@
             <h2 class="font-bold text-3xl">
                 A Brief Introduction
             </h2>
-            <p class="text-lg">
+            <p class="text-gray-500 text-lg ">
                {{$about->description}}
             </p>
         </div>
