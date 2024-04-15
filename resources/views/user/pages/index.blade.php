@@ -9,7 +9,7 @@
                 Journal of Measurements in
                 <span class="text-fpiGreen">Engineering</span>
             </h1>
-            <p class="text-lg text-center sm:text-xl md:text-left">
+            <p class="text-slate-400 text-lg max-w-xl">
                 Theoretical and practical advancements in the field of measurements,
                 including instrumentation, sensor technology, data processing, and
                 diverse engineering applications.

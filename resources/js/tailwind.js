@@ -50,3 +50,12 @@ var swiper = new swiper(".slide-content", {
       prevEl: ".swiper-button-prev",
     },
   });
+
+  function toggleDropdown() {
+    var dropdown = document.getElementById('authorsDropdown');
+    if (dropdown.classList.contains('hidden')) {
+        dropdown.classList.remove('hidden');
+    } else {
+        dropdown.classList.remove('hidden');
+    }
+}

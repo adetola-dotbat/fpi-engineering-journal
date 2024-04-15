@@ -8,7 +8,7 @@ export default {
   theme: {
     screens: {
         sm: "480px",
-        md: "1024px",
+        // md: "1024px",
         lg: "1224px",
         xl: "1440px"
       },
@@ -21,6 +21,7 @@ export default {
             ashWhite: '#E5E7E9',
             articleColor: 'hsl(204, 51%, 95%)',
             myGold: '#F1C40F ',
+
         }
       },
       container:{

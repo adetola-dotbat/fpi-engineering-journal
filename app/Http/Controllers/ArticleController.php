@@ -19,7 +19,7 @@ class ArticleController extends Controller
         $data = [
             'article' => $this->articleService->all(),
         ];
-        return view('user.pages.index', $data);
+        return view('user.pages.articles', $data);
     }
     public function create()
     {
