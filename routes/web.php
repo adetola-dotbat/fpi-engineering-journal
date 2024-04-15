@@ -29,7 +29,8 @@ Route::get('/test', function () {
 });
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
-Route::resource('announcement', AnnouncementController::class)->only(['index','show']);
+Route::get('/view-announcement/{announcement}', [AnnouncementController::class, 'show'])->name('announcement.view');
+Route::get('/paper-template', [PaperTemplateController::class, 'index'])->name('paper-template.index');
 Route::resource('about', AboutController::class)->only(['index']);
 Route::resource('call-for-paper', CallForPaperController::class)->only(['index']);
 Route::resource('designation', DesignationController::class)->only(['index']);
@@ -56,6 +57,10 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('article', ArticleController::class)
         ->only(['show', 'create', 'edit', 'store', 'update', 'destroy']);
     Route::resource('quick-link', QuickLinksController::class)
+        ->only(['show', 'create', 'edit', 'store', 'update', 'destroy']);
+    Route::resource('guideline', GuidelineController::class)
+        ->only(['show', 'create', 'edit', 'store', 'update', 'destroy']);
+    Route::resource('paper-template', PaperTemplateController::class)
         ->only(['show', 'create', 'edit', 'store', 'update', 'destroy']);
 });
 

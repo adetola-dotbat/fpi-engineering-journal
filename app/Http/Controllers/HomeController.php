@@ -6,6 +6,7 @@ use App\Services\AboutService;
 use App\Services\AnnouncementService;
 use App\Services\ArticleService;
 use App\Services\EditorialBoardService;
+use App\Services\QuickLinksService;
 use App\Services\VolumeService;
 use Illuminate\Http\Request;
 
@@ -16,7 +17,7 @@ class HomeController extends Controller
      *
      * @return void
      */
-    public function __construct(protected AnnouncementService $announcementService, protected AboutService $aboutService, protected VolumeService $volumeService, protected EditorialBoardService $editorialBoardService, protected ArticleService $articleService)
+    public function __construct(protected AnnouncementService $announcementService, protected AboutService $aboutService, protected VolumeService $volumeService, protected EditorialBoardService $editorialBoardService, protected ArticleService $articleService, protected QuickLinksService $quickLinksService)
     {
     }
 
@@ -30,6 +31,7 @@ class HomeController extends Controller
 
         $data = [
             'announcements' => $this->announcementService->getAllActiveAnnouncement(),
+            'quickLinks' => $this->quickLinksService->all(),
             'about' => $this->aboutService->first(),
             'volumes' => $this->volumeService->all(),
             'volume' => $this->volumeService->getLatestVolume(),

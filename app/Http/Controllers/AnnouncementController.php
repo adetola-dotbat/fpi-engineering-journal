@@ -6,11 +6,12 @@ use App\Enums\StatusEnum;
 use App\Http\Requests\AnnouncementRequest;
 use App\Models\Announcement;
 use App\Services\AnnouncementService;
+use App\Services\QuickLinksService;
 use Illuminate\Http\Request;
 
 class AnnouncementController extends Controller
 {
-    public function __construct(protected AnnouncementService $announcementService)
+    public function __construct(protected AnnouncementService $announcementService, protected QuickLinksService $quickLinksService)
     {
     }
     public function index()
@@ -27,7 +28,6 @@ class AnnouncementController extends Controller
         $data = [
             'title_page' => 'Announcement',
             'announcements' => $this->announcementService->all(),
-            'user' => auth()->user(),
         ];
         return view('administration.pages.announcement.index', $data);
     }
@@ -36,6 +36,7 @@ class AnnouncementController extends Controller
             'title' => 'Announcement',
             'announcements' => $this->announcementService->getAllActiveAnnouncement(),
             'announcement' => $this->announcementService->getAnnouncementBySlug($announcement),
+            'quickLinks' => $this->quickLinksService->all(),
         ];
         return view('user.pages.announcement', $data);
     }

@@ -41,8 +41,8 @@
                         </a>
                     </li>
                     <li class='border-b py-3'>
-                        <a href='{{ route('paper.index') }}'
-                            class='hover:text-fpiGreen hover:fill-[#007bff] @if (Route::is('paper.index')) text-fpiGreen @endif font-semibold text-[15px] block'>
+                        <a href='{{ route('paper-template.index') }}'
+                            class='hover:text-fpiGreen hover:fill-fpiGreen @if (Route::is('paper-template.index')) text-fpiGreen @endif font-semibold text-[15px] block'>
                             Template
                         </a>
                     </li>

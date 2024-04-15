@@ -13,7 +13,7 @@ class QuickLinksService
 
     public function all()
     {
-        return $this->quickLink->get();
+        return $this->quickLink->latest()->limit(8)->get();
     }
     public function getQuickLinkById($quickLink)
     {

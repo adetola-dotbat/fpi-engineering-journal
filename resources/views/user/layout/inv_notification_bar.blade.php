@@ -6,7 +6,7 @@
         <ul class="list-disc w-[55%] mx-auto mt-4 font-semibold text-fpiGreen">
             @forelse ($announcements as $anouncement )
             <li>
-                <a href="{{ route('announcement.show', $anouncement->slug) }}" class="underline">
+                <a href="{{ route('announcement.view', $anouncement->slug) }}" class="underline">
                     {{ $anouncement->title }}
                 </a>
             </li>
@@ -20,21 +20,15 @@
             Quick Links
         </h1>
         <ul class="list-disc w-[55%] mx-auto mt-4 font-semibold text-fpiGreen">
-            <li>
-                <a href="" class="underline">
-                    Federal Polytechnic, Ilaro, Science journal
-                </a>
-            </li>
-            <li>
-                <a href="" class="underline">
-                    Federal Polytechnic, Ilaro, WITED journal
-                </a>
-            </li>
-            <li>
-                <a href="" class="underline">
-                    Federal Polytechnic, Ilaro, Humanity journal
-                </a>
-            </li>
+          @forelse ($quickLinks as $link )
+          <li>
+            <a href="{{ $link->link }}" target="_blank" class="underline">
+              {{ $link->title }}
+            </a>
+        </li>
+          @empty
+              No links
+          @endforelse
         </ul>
     </div>
 </div>
