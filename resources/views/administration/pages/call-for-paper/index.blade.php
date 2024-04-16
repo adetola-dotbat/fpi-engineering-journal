@@ -5,7 +5,7 @@
 @section('content')
     <section class="section">
         <div class="row">
-            <div class="card col-md-6">
+            <div class="card">
                 <div class="card-body">
                     <h5 class="card-title text-black">{{ $title_page }}</h5>
                     <form action="{{ route('call-for-paper.update', $paper->id) }}" method="POST">

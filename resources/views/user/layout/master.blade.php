@@ -21,9 +21,12 @@
             box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
             background-color: white;
         }
+        body {
+            margin:0%
+        }
     </style>
 </head>
-
+{{-- container max-w-3xl md:max-w-[100%] --}}
 <body class="container max-w-3xl md:max-w-[100%]">
     {{-- header --}}
     @include('user.layout.inc_header')

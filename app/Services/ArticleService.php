@@ -7,7 +7,7 @@ use App\Models\Article;
 class ArticleService
 {
 
-    public function __construct(protected Article $article)
+    public function __construct(protected Article $article, protected VolumeService $volumeService)
     {
     }
     public function all()
@@ -17,6 +17,13 @@ class ArticleService
     public function getArticleById($article)
     {
         return $this->article->findOrFail($article);
+    }
+    public function getEditorPicksArticle(){
+        $latestVolume = $this->volumeService->getLatestVolume();
+        return $this->article->where('volume_id', $latestVolume->id)->with('volume')->get();
+    }
+    public function getPopularArticle(){
+        return $this->article->orderBy('popularity', 'desc')->get();
     }
     public function store(array $data)
     {

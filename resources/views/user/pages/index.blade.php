@@ -83,80 +83,45 @@
                                     Recently Published
                                 </button>
                             </div>
-                            <div class="md:w-full">
-                                <button
-                                    class="w-full p-2 px-5 text-sm font-bold border rounded-full border-fpiGreen text-fpiGreen hover:text-white hover:bg-fpiGreen md:p-3 md:px-3 lg:p-3 lg:px-4"
-                                    data-tab-target="#tab3" role="tab">
-                                    Popularity
-                                </button>
-                            </div>
                         </div>
                     </div>
                     <div id="myTabContent">
                         <div class="space-y-4" id="tab1" data-tab-content role="tabpanel">
-                            <div class="flex flex-col md:flex-row md:items-center md:gap-4 lg:items-center">
-                                <img src="{{ asset('images/img/eng-image-bg.jpg') }}" alt=""
-                                    class="hidden md:block md:w-1/3" />
-                                <div
-                                    class="space-y-4 md:space-y-1 md:text-sm md:w-[55%] lg:text-[1em] lg:w-[60%] lg:space-y-2">
-                                    <h1 class="text-3xl font-bold md:text-2xl">
-                                        Characterization of 3D-Radar img of pavement devoid
-                                        damage based on FDTD
-                                    </h1>
-                                    <p class="text-darkGrayishBlue">
-                                        Lorem ipsum dolor sit amet, consectetur adipisicing
-                                        elit. Magni, minus. Dignissimos minima placeat
-                                        repudiandae, veritatis unde quas magni explicabo tenetur
-                                        illo similique, voluptate vel laboriosam architecto id
-                                        eveniet, libero error?
-                                    </p>
-                                    <div class="lg:text-left">
-                                        <button class="font-bold text-fpiGreen hover:text-white">
-                                            Read more
-                                        </button>
+                            @forelse ($editorPicks as $article)
+                                <div class="flex flex-col md:flex-row md:items-center md:gap-4 lg:items-center">
+                                    <img src="{{ asset($article->volume->image) }}" alt=""
+                                        class="hidden md:block md:w-1/3" />
+                                    <div
+                                        class="space-y-4 md:space-y-1 md:text-sm md:w-[55%] lg:text-[1em] lg:w-[60%] lg:space-y-2">
+                                        <h1 class="text-3xl font-bold md:text-2xl">
+                                            {{ $article->title }}
+                                        </h1>
+                                        <p class="text-darkGrayishBlue">
+                                            {{ $article->abstract }}
+                                        </p>
+                                        <div class="lg:text-left">
+                                            <button class="font-bold text-fpiGreen hover:text-white">
+                                                Read more
+                                            </button>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="flex flex-col md:flex-row md:items-center md:gap-4 lg:items-center">
-                                <img src="{{ asset('images/img/eng-image-bg.jpg') }}" alt=""
-                                    class="hidden md:block md:w-1/3" />
-                                <div
-                                    class="space-y-4 md:space-y-1 md:text-sm md:w-[55%] lg:text-[1em] lg:w-[60%] lg:space-y-2">
-                                    <h1 class="text-3xl font-bold md:text-2xl">
-                                        Characterization of 3D-Radar img of pavement devoid
-                                        damage based on FDTD
-                                    </h1>
-                                    <p class="text-darkGrayishBlue">
-                                        Lorem ipsum dolor sit amet, consectetur adipisicing
-                                        elit. Magni, minus. Dignissimos minima placeat
-                                        repudiandae, veritatis unde quas magni explicabo tenetur
-                                        illo similique, voluptate vel laboriosam architecto id
-                                        eveniet, libero error?
-                                    </p>
-                                    <div class="lg:text-left">
-                                        <button class="font-bold text-fpiGreen hover:text-white">
-                                            Read more
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
+                            @empty
+                                No Editor's Pick
+                            @endforelse
                         </div>
                         <div class="hidden space-y-4" id="tab2" data-tab-content role="tabpanel">
+                            @forelse ($popularity as $article)
                             <div class="flex flex-col md:flex-row md:items-center md:gap-4 lg:items-center">
-                                <img src="{{ asset('images/img/eng-image-bg.jpg') }}" alt=""
+                                <img src="{{ asset($article->volume->image) }}" alt=""
                                     class="hidden md:block md:w-1/3" />
                                 <div
                                     class="space-y-4 md:space-y-1 md:text-sm md:w-[55%] lg:text-[1em] lg:w-[60%] lg:space-y-2">
                                     <h1 class="text-3xl font-bold md:text-2xl">
-                                        Recent published of 3D-Radar img of pavement devoid
-                                        damage based on FDTD
+                                        {{ $article->title }}
                                     </h1>
                                     <p class="text-darkGrayishBlue">
-                                        Lorem ipsum dolor sit amet, consectetur adipisicing
-                                        elit. Magni, minus. Dignissimos minima placeat
-                                        repudiandae, veritatis unde quas magni explicabo tenetur
-                                        illo similique, voluptate vel laboriosam architecto id
-                                        eveniet, libero error?
+                                        {{ $article->abstract }}
                                     </p>
                                     <div class="lg:text-left">
                                         <button class="font-bold text-fpiGreen hover:text-white">
@@ -165,29 +130,9 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="flex flex-col md:flex-row md:items-center md:gap-4 lg:items-center">
-                                <img src="{{ asset('images/img/eng-image-bg.jpg') }}" alt=""
-                                    class="hidden md:block md:w-1/3" />
-                                <div
-                                    class="space-y-4 md:space-y-1 md:text-sm md:w-[55%] lg:text-[1em] lg:w-[60%] lg:space-y-2">
-                                    <h1 class="text-3xl font-bold md:text-2xl">
-                                        Recent published of 3D-Radar img of pavement devoid
-                                        damage based on FDTD
-                                    </h1>
-                                    <p class="text-darkGrayishBlue">
-                                        Lorem ipsum dolor sit amet, consectetur adipisicing
-                                        elit. Magni, minus. Dignissimos minima placeat
-                                        repudiandae, veritatis unde quas magni explicabo tenetur
-                                        illo similique, voluptate vel laboriosam architecto id
-                                        eveniet, libero error?
-                                    </p>
-                                    <div class="lg:text-left">
-                                        <button class="font-bold text-fpiGreen hover:text-white">
-                                            Read more
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
+                            @empty
+                                No Editor's Pick
+                            @endforelse
                         </div>
                     </div>
                 </div>
@@ -201,77 +146,33 @@
             <div class="flex justify-between mb-10">
                 <h1 class="text-3xl font-bold">Volumes</h1>
                 <p class="text-xl font-bold text-fpiGreen">
-                    <a href=""> See All </a>
+                    <a href="{{ route('article.index') }}"> See All </a>
                 </p>
             </div>
             <!-- card- start -->
             <div class="">
-                <div class="flex flex-wrap justify-center -mx-4">
+                <div class="flex flex-wrap  -mx-4">
                     <!-- Card 1 -->
+                    @forelse ($volumes as $volume )
                     <div class="w-full px-4 py-4 sm:w-[22rem] md:max-w-lg lg:max-w-xl xl:max-w-2xl">
                         <div class="relative w-full rounded-md">
-                            <img src="./img/eng-image.jpg" alt="" class="w-full h-auto rounded-3xl" />
+                            <img src="{{ $volume->image }}" alt="" class="w-full h-auto rounded-3xl" />
                             <div
                                 class="absolute inset-0 opacity-100 rounded-3xl bg-gradient-to-t from-green-500 to-green-10">
                             </div>
                             <div class="absolute bottom-0 flex flex-col items-center justify-end w-full pb-4">
                                 <h1 class="text-xl font-bold text-white sm:text-2xl">
-                                    Volume 1
+                                    {{ $volume->title }}
                                 </h1>
                                 <p class="tracking-wide text-white text-md sm:text-lg">
-                                    02 April, 2024.
+                                    {{ $volume->created_at }}
                                 </p>
                             </div>
                         </div>
                     </div>
-                    <div class="w-full px-4 py-4 sm:w-[22rem] md:max-w-lg lg:max-w-xl xl:max-w-2xl">
-                        <div class="relative w-full rounded-md">
-                            <img src="./img/eng-image.jpg" alt="" class="w-full h-auto rounded-3xl" />
-                            <div
-                                class="absolute inset-0 opacity-100 rounded-3xl bg-gradient-to-t from-green-500 to-green-10">
-                            </div>
-                            <div class="absolute bottom-0 flex flex-col items-center justify-end w-full pb-4">
-                                <h1 class="text-xl font-bold text-white sm:text-2xl">
-                                    Volume 1
-                                </h1>
-                                <p class="tracking-wide text-white text-md sm:text-lg">
-                                    02 April, 2024.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="w-full px-4 py-4 sm:w-[22rem] md:max-w-lg lg:max-w-xl xl:max-w-2xl">
-                        <div class="relative w-full rounded-md">
-                            <img src="./img/eng-image.jpg" alt="" class="w-full h-auto rounded-3xl" />
-                            <div
-                                class="absolute inset-0 opacity-100 rounded-3xl bg-gradient-to-t from-green-500 to-green-10">
-                            </div>
-                            <div class="absolute bottom-0 flex flex-col items-center justify-end w-full pb-4">
-                                <h1 class="text-xl font-bold text-white sm:text-2xl">
-                                    Volume 1
-                                </h1>
-                                <p class="tracking-wide text-white text-md sm:text-lg">
-                                    02 April, 2024.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="w-full px-4 py-4 sm:w-[22rem] md:max-w-lg lg:max-w-xl xl:max-w-2xl">
-                        <div class="relative w-full rounded-md">
-                            <img src="./img/eng-image.jpg" alt="" class="w-full h-auto rounded-3xl" />
-                            <div
-                                class="absolute inset-0 opacity-100 rounded-3xl bg-gradient-to-t from-green-500 to-green-10">
-                            </div>
-                            <div class="absolute bottom-0 flex flex-col items-center justify-end w-full pb-4">
-                                <h1 class="text-xl font-bold text-white sm:text-2xl">
-                                    Volume 1
-                                </h1>
-                                <p class="tracking-wide text-white text-md sm:text-lg">
-                                    02 April, 2024.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
+                    @empty
+                         <h4 class="text-center"> No Volume yet</h4>
+                    @endforelse
                 </div>
             </div>
 

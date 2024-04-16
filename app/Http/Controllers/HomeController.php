@@ -36,8 +36,10 @@ class HomeController extends Controller
             'volumes' => $this->volumeService->all(),
             'volume' => $this->volumeService->getLatestVolume(),
             'editor' =>$this->editorialBoardService->getEditorInChief(),
+            'editorPicks' => $this->articleService->getEditorPicksArticle(),
+            'popularity' => $this->articleService->getPopularArticle(),
         ];
-        // dd($data['about']);
+        // dd($data);
         if(auth()->user()){
             $data['title_page'] = 'Dashboard';
             return view('administration.pages.dashboard.index', $data);

@@ -33,12 +33,9 @@ Route::get('/view-announcement/{announcement}', [AnnouncementController::class, 
 Route::get('/paper-template', [PaperTemplateController::class, 'index'])->name('paper-template.index');
 Route::resource('about', AboutController::class)->only(['index']);
 Route::resource('call-for-paper', CallForPaperController::class)->only(['index']);
-Route::resource('designation', DesignationController::class)->only(['index']);
 Route::resource('editorial-board', EditorialBoardController::class)->only(['index']);
 Route::resource('volume', VolumeController::class)->only(['index']);
 Route::resource('article', ArticleController::class)->only(['index']);
-Route::resource('quick-link', QuickLinksController::class)->only(['index']);
-Route::resource('paper', PaperTemplateController::class)->only(['index']);
 Route::resource('guideline', GuidelineController::class)->only(['index']);
 Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard');
