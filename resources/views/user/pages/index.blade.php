@@ -21,7 +21,7 @@
                 </button>
             </div>
         </div>
-        <div class="relative mt-12 md:mt-0">
+        <div class="relative mt-12 md:mt-0 pt-10">
             <div class="absolute top-20 sm:top-24 md:top-72 -left-4 md:-left-14">
                 <button class="p-2 px-6 text-white bg-orange-500 rounded-full sm:p-3 sm:px-8">
                     Latest Volume
@@ -80,7 +80,7 @@
                                 <button
                                     class="w-full p-2 px-5 text-sm font-bold border rounded-full border-fpiGreen text-fpiGreen hover:text-white hover:bg-fpiGreen md:p-3 md:px-3 lg:p-3 lg:px-4"
                                     data-tab-target="#tab2" role="tab">
-                                    Recently Published
+                                    Popularity
                                 </button>
                             </div>
                         </div>
@@ -90,7 +90,34 @@
                             @forelse ($editorPicks as $article)
                                 <div class="flex flex-col md:flex-row md:items-center md:gap-4 lg:items-center">
                                     <img src="{{ asset($article->volume->image) }}" alt=""
-                                        class="hidden md:block md:w-1/3" />
+                                        class="hidden md:block h-72 rounded-md shadow-md" />
+                                    <div
+                                        class="space-y-4 md:space-y-1 md:text-sm md:w-[55%] lg:text-[1em] lg:w-[60%] lg:space-y-2">
+                                        <h1 class="text-3xl font-bold md:text-2xl">
+                                            {{ $article->title }}
+                                        </h1>
+                                        <p class="text-darkGrayishBlue">
+                                            {{ limit_words($article->abstract, 30) }}
+                                        </p>
+                                        <div class="lg:text-left">
+                                            <button class="font-bold text-fpiGreen hover:text-white">
+                                                <a href="{{ route('view.article', $article->slug) }}"> Read more </a>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            @empty
+                                No Editor's Pick
+                            @endforelse
+                            @if ($editorPicks->hasPages())
+                                {{ $editorPicks->links() }}
+                            @endif
+                        </div>
+                        <div class="hidden space-y-4" id="tab2" data-tab-content role="tabpanel">
+                            @forelse ($popularity as $article)
+                                <div class="flex flex-col md:flex-row md:items-center md:gap-4 lg:items-center">
+                                    <img src="{{ asset($article->volume->image) }}" alt=""
+                                        class="hidden md:block h-72 rounded-md shadow-md" />
                                     <div
                                         class="space-y-4 md:space-y-1 md:text-sm md:w-[55%] lg:text-[1em] lg:w-[60%] lg:space-y-2">
                                         <h1 class="text-3xl font-bold md:text-2xl">
@@ -106,30 +133,6 @@
                                         </div>
                                     </div>
                                 </div>
-                            @empty
-                                No Editor's Pick
-                            @endforelse
-                        </div>
-                        <div class="hidden space-y-4" id="tab2" data-tab-content role="tabpanel">
-                            @forelse ($popularity as $article)
-                            <div class="flex flex-col md:flex-row md:items-center md:gap-4 lg:items-center">
-                                <img src="{{ asset($article->volume->image) }}" alt=""
-                                    class="hidden md:block md:w-1/3" />
-                                <div
-                                    class="space-y-4 md:space-y-1 md:text-sm md:w-[55%] lg:text-[1em] lg:w-[60%] lg:space-y-2">
-                                    <h1 class="text-3xl font-bold md:text-2xl">
-                                        {{ $article->title }}
-                                    </h1>
-                                    <p class="text-darkGrayishBlue">
-                                        {{ $article->abstract }}
-                                    </p>
-                                    <div class="lg:text-left">
-                                        <button class="font-bold text-fpiGreen hover:text-white">
-                                            Read more
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
                             @empty
                                 No Editor's Pick
                             @endforelse
@@ -153,25 +156,25 @@
             <div class="">
                 <div class="flex flex-wrap  -mx-4">
                     <!-- Card 1 -->
-                    @forelse ($volumes as $volume )
-                    <div class="w-full px-4 py-4 sm:w-[22rem] md:max-w-lg lg:max-w-xl xl:max-w-2xl">
-                        <div class="relative w-full rounded-md">
-                            <img src="{{ $volume->image }}" alt="" class="w-full h-auto rounded-3xl" />
-                            <div
-                                class="absolute inset-0 opacity-100 rounded-3xl bg-gradient-to-t from-green-500 to-green-10">
-                            </div>
-                            <div class="absolute bottom-0 flex flex-col items-center justify-end w-full pb-4">
-                                <h1 class="text-xl font-bold text-white sm:text-2xl">
-                                    {{ $volume->title }}
-                                </h1>
-                                <p class="tracking-wide text-white text-md sm:text-lg">
-                                    {{ $volume->created_at }}
-                                </p>
+                    @forelse ($volumes as $volume)
+                        <div class="w-full px-4 py-4 sm:w-[22rem] md:max-w-lg lg:max-w-xl xl:max-w-2xl">
+                            <div class="relative w-full rounded-md">
+                                <img src="{{ $volume->image }}" alt="" class="w-full h-auto rounded-3xl" />
+                                <div
+                                    class="absolute inset-0 opacity-100 rounded-3xl bg-gradient-to-t from-green-500 to-green-10">
+                                </div>
+                                <div class="absolute bottom-0 flex flex-col items-center justify-end w-full pb-4">
+                                    <h1 class="text-xl font-bold text-white sm:text-2xl">
+                                        {{ $volume->title }}
+                                    </h1>
+                                    <p class="tracking-wide text-white text-md sm:text-lg">
+                                        {{ $volume->created_at }}
+                                    </p>
+                                </div>
                             </div>
                         </div>
-                    </div>
                     @empty
-                         <h4 class="text-center"> No Volume yet</h4>
+                        <h4 class="text-center"> No Volume yet</h4>
                     @endforelse
                 </div>
             </div>

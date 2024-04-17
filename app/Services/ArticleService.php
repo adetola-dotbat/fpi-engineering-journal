@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Models\Article;
+use Illuminate\Support\Str;
 
 class ArticleService
 {
@@ -12,7 +13,7 @@ class ArticleService
     }
     public function all()
     {
-        return $this->article->get();
+        return $this->article->latest()->get();
     }
     public function getArticleById($article)
     {
@@ -20,20 +21,27 @@ class ArticleService
     }
     public function getEditorPicksArticle(){
         $latestVolume = $this->volumeService->getLatestVolume();
-        return $this->article->where('volume_id', $latestVolume->id)->with('volume')->get();
+        return $this->article->where('volume_id', $latestVolume->id)->with('volume')->latest()->paginate(2);
     }
     public function getPopularArticle(){
-        return $this->article->orderBy('popularity', 'desc')->get();
+        return $this->article->orderBy('popularity', 'desc')->take(2)->get();
+    }
+    public function getArticleBySlug($article){
+        return $this->article->where('slug', $article)->first();
     }
     public function store(array $data)
     {
-        if ($data) {
+        if (isset($data['title'])) {
+            $data['slug'] = Str::slug($data['title']);
             $data['publish_date'] = now();
         }
         return $this->article->create($data);
     }
     public function update($article, array $data)
     {
+        if (isset($data['title'])) {
+            $data['slug'] = Str::slug($data['title']);
+        }
         $article = $this->getArticleById($article);
         return $article->update($data);
     }
@@ -42,4 +50,6 @@ class ArticleService
         $article = $this->getArticleById($article);
         $article->delete();
     }
+
+
 }

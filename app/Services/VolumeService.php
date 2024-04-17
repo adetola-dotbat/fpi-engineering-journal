@@ -13,7 +13,7 @@ class VolumeService
 
     public function all()
     {
-        return $this->volume->get();
+        return $this->volume->with('articles')->get();
     }
     public function getVolumeById($volume)
     {

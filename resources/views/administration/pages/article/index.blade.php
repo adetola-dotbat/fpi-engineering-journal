@@ -91,7 +91,7 @@
                                                 <label for="authors" class="col-form-label">Authors</label>
                                                 <input type="text"
                                                     class="form-control @error('authors') is-invalid @enderror"
-                                                    id="authors" name="authors" placeholder="Article authors"
+                                                    id="authors" name="author" placeholder="Article authors"
                                                     value="{{ old('authors') }}">
                                                 @error('authors')
                                                     <div class="invalid-feedback">{{ $message }}</div>

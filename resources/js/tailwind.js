@@ -9,16 +9,19 @@ document.addEventListener("DOMContentLoaded", () => {
           tc.classList.add("hidden");
         });
         tabs.forEach((t) => {
-          t.classList.remove("border-blue-500"); // Remove the active class from all tabs
-          t.classList.add("border-transparent"); // Add back the transparent border to non-active tabs
+          t.classList.remove("bg-fpiGreen", "text-white"); // Remove active styles
+          t.classList.add("border-fpiGreen", "text-fpiGreen", "hover:text-white", "hover:bg-fpiGreen"); // Add inactive styles
         });
-        tab.classList.add("border-blue-500"); // Add the active class to the clicked tab
-        tab.classList.remove("border-transparent"); // Remove the transparent border from the active tab
+        tab.classList.add("bg-fpiGreen", "text-white"); // Active styles
+        tab.classList.remove("border-fpiGreen", "text-fpiGreen"); // Remove inactive styles
         target.classList.remove("hidden"); // Show the clicked tab content
       });
     });
 
-  });
+    // Trigger click on the first tab to make it active on page load
+    tabs[0].click();
+});
+
 
 
 const hamburger = document.getElementById('hamburger');

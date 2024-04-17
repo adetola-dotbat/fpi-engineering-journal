@@ -25,6 +25,7 @@
             margin:0%
         }
     </style>
+    @stack('style')
 </head>
 {{-- container max-w-3xl md:max-w-[100%] --}}
 <body class="container max-w-3xl md:max-w-[100%]">
@@ -63,6 +64,7 @@
             window.addEventListener('scroll', checkScroll);
         });
     </script>
+    @stack('script')
 </body>
 {{-- <script>
     function toggleDropdown() {
