@@ -23,6 +23,13 @@ class AboutController extends Controller
         ];
         return view('user.pages.about', $data);
     }
+    public function contact(){
+        $data = [
+            'title' => 'Contact us',
+            'about' => $this->aboutService->first(),
+        ];
+        return view('user.pages.contact', $data);
+    }
     public function create()
     {
         $data = [

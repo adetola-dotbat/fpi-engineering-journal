@@ -9,7 +9,7 @@
                 <h3 class="text-4xl font-bold hover:text-fpiGreen">
                     {{ $title }}
                 </h3>
-                <p class="text-2xl pt-3">
+                <p class="pt-3 text-2xl">
                     <a href="{{ route('home') }}">Home</a> > <a class="text-fpiGreen">{{ $title }}</a>
                 </p>
             </div>

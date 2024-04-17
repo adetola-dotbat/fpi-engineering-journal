@@ -31,6 +31,7 @@ Route::get('/test', function () {
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/view-announcement/{announcement}', [AnnouncementController::class, 'show'])->name('announcement.view');
 Route::get('/paper-template', [PaperTemplateController::class, 'index'])->name('paper-template.index');
+Route::get('/contact', [AboutController::class, 'contact'])->name('contact');
 Route::get('/view-article/{article}', [ArticleController::class, 'show'])->name('view.article');
 Route::get('/volume/{volumeId}/articles', 'ArticleController@getArticlesByVolume');
 Route::resource('about', AboutController::class)->only(['index']);

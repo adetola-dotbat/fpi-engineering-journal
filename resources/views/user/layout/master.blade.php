@@ -34,8 +34,8 @@
 
     <main class="mt-14 max-w[10%]">
         @yield('content')
-        @include('user.layout.inc_footer')
     </main>
+    @include('user.layout.inc_footer')
 
     <script>
         var toggleBtn = document.getElementById('toggle');

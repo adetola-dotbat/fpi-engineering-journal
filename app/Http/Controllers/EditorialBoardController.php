@@ -5,22 +5,29 @@ namespace App\Http\Controllers;
 use App\Enums\StatusEnum;
 use App\Helper\FileHelper;
 use App\Http\Requests\EditorialBoardRequest;
+use App\Services\AnnouncementService;
 use App\Services\DesignationService;
 use App\Services\EditorialBoardService;
+use App\Services\QuickLinksService;
 use Illuminate\Http\Request;
 
 class EditorialBoardController extends Controller
 {
 
-    public function __construct(protected EditorialBoardService $editorialBoardService, protected DesignationService $designationService)
+    public function __construct(protected EditorialBoardService $editorialBoardService, protected DesignationService $designationService, protected AnnouncementService $announcementService, protected QuickLinksService $quickLinksService)
     {
     }
     public function index()
     {
         $data = [
+            'title' => 'Editorial Board',
+            'editorInChief' => $this->editorialBoardService->getEditorInChief(),
+            'designations' => $this->designationService->all()->load('editors'),
+            'announcements' => $this->announcementService->getAllActiveAnnouncement(),
+            'quickLinks' => $this->quickLinksService->all(),
             'editorials' => $this->editorialBoardService->all(),
         ];
-        return view('user.pages.index', $data);
+        return view('user.pages.editors', $data);
     }
 
     public function create()
