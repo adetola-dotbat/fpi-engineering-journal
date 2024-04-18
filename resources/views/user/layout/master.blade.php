@@ -5,8 +5,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>FPI Engineering Journal</title>
+    <link rel="icon" href="{{ asset('images/img/fpi_logo.png') }}" size="16x16" type="image/icon">
     @vite(['resources/css/tailwind.css', 'resources/js/tailwind.js'])
-    {{-- <link rel="stylesheet" href="main.css" /> --}}
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         .header-fixed {
@@ -66,15 +66,4 @@
     </script>
     @stack('script')
 </body>
-{{-- <script>
-    function toggleDropdown() {
-        var dropdown = document.getElementById('authorsDropdown');
-        if (dropdown.classList.contains('hidden')) {
-            dropdown.classList.remove('hidden');
-        } else {
-            dropdown.classList.remove('hidden');
-        }
-    }
-</script> --}}
-
 </html>
