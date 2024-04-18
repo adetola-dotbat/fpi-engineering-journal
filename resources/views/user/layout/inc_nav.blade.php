@@ -59,7 +59,7 @@
         <div class="hidden lg:block">
             <button
                 class="p-2 px-4 font-bold bg-white border rounded-full border-fpiGreen text-fpiGreen hover:text-white hover:bg-fpiGreen lg:px-4">
-                Send Manuscript
+                <a href="{{ route('manuscript.index') }}"> Send Manuscript </a>
             </button>
         </div>
     </div>
