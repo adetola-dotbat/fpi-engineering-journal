@@ -9,7 +9,7 @@
                 Journal of Measurements in
                 <span class="text-fpiGreen">Engineering</span>
             </h1>
-            <p class="text-gray-500 text-lg max-w-xl">
+            <p class="max-w-xl text-lg text-gray-500">
                 Theoretical and practical advancements in the field of measurements,
                 including instrumentation, sensor technology, data processing, and
                 diverse engineering applications.
@@ -17,11 +17,11 @@
             <div class="text-center md:text-left">
                 <button
                     class="bg-fpiGreen p-2 sm:p-3 rounded-full text-white px-4 sm:px-6 text-lg sm:text-xl hover:bg-[#2b6b26dd]">
-                    Send Manuscript
+                  <a href="{{ route('manuscript.index') }}"> Send Manuscript </a>
                 </button>
             </div>
         </div>
-        <div class="relative mt-12 md:mt-0 pt-10">
+        <div class="relative pt-10 mt-12 md:mt-0">
             <div class="absolute top-20 sm:top-24 md:top-72 -left-4 md:-left-14">
                 <button class="p-2 px-6 text-white bg-orange-500 rounded-full sm:p-3 sm:px-8">
                     Latest Volume
@@ -29,15 +29,15 @@
             </div>
             <img src="{{ asset($volume->image) }}" alt=""
                 class="w-56 h-48 sm:w-64 sm:h-[18rem] md:w-72 md:h-[28rem] lg:w-96 lg:h-[32rem] xl:w-[28rem] xl:h-[35rem] rounded-tl-[15rem] rounded-tr-[15rem] rounded-br-[3rem] rounded-bl-[14rem] shadow-lg" />
-            <div class="absolute bottom-6 md:bottom-16 left-20 md:left-60 z-10">
+            <div class="absolute z-10 bottom-6 md:bottom-16 left-20 md:left-60">
                 <div class="bg-orange-600 w-36 h-36 sm:w-44 sm:h-44 md:w-52 md:h-52 blur-[50px]"></div>
             </div>
         </div>
     </section>
-    <section class="px-4 mt-10 md:px-10 lg:px-20 xl:px-56 py-10" id="about-us">
+    <section class="px-4 py-10 mt-10 md:px-10 lg:px-20 xl:px-56" id="about-us">
         <div class="flex flex-col-reverse gap-8 md:flex-row md:gap-12">
             <div class="hidden sm:hidden md:block lg:w-4/12">
-                <img src="{{ asset($editor->image) }}" alt="" class="w-96 rounded-lg" />
+                <img src="{{ asset($editor->image) }}" alt="" class="rounded-lg w-96" />
             </div>
             <div class="flex flex-col justify-center space-y-6 text-center md:text-left md:w-8/12 lg:space-y-9">
                 <h1 class="text-2xl font-bold sm:text-3xl">About Us</h1>
@@ -90,7 +90,7 @@
                             @forelse ($editorPicks as $article)
                                 <div class="flex flex-col md:flex-row md:items-center md:gap-4 lg:items-center">
                                     <img src="{{ asset($article->volume->image) }}" alt=""
-                                        class="hidden md:block h-72 rounded-md shadow-md" />
+                                        class="hidden rounded-md shadow-md md:block h-72" />
                                     <div
                                         class="space-y-4 md:space-y-1 md:text-sm md:w-[55%] lg:text-[1em] lg:w-[60%] lg:space-y-2">
                                         <h1 class="text-3xl font-bold md:text-2xl">
@@ -117,7 +117,7 @@
                             @forelse ($popularity as $article)
                                 <div class="flex flex-col md:flex-row md:items-center md:gap-4 lg:items-center">
                                     <img src="{{ asset($article->volume->image) }}" alt=""
-                                        class="hidden md:block h-72 rounded-md shadow-md" />
+                                        class="hidden rounded-md shadow-md md:block h-72" />
                                     <div
                                         class="space-y-4 md:space-y-1 md:text-sm md:w-[55%] lg:text-[1em] lg:w-[60%] lg:space-y-2">
                                         <h1 class="text-3xl font-bold md:text-2xl">
@@ -154,7 +154,7 @@
             </div>
             <!-- card- start -->
             <div class="">
-                <div class="flex flex-wrap  -mx-4">
+                <div class="flex flex-wrap -mx-4">
                     <!-- Card 1 -->
                     @forelse ($volumes as $volume)
                         <div class="w-full px-4 py-4 sm:w-[22rem] md:max-w-lg lg:max-w-xl xl:max-w-2xl">

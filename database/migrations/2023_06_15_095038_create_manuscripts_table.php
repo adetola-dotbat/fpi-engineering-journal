@@ -19,9 +19,8 @@ return new class extends Migration
             $table->string('title');
             $table->text('abstract');
             $table->string('file');
-            $table->string('user_id');
             $table->string('authors');
-            $table->string('status')->default(ManuscriptStatus::ACTIVE);
+            $table->string('status')->default(ManuscriptStatus::INACTIVE);
             $table->integer('editors_pick')->default(0);
             $table->timestamps();
         });

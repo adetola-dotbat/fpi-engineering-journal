@@ -7,7 +7,7 @@ use App\Models\Manuscript;
 class ManuscriptService
 {
 
-    public function __construct(protected Manuscript $manuscript)
+    public function __construct(protected Manuscript $manuscript, protected VolumeService $volumeService)
     {
     }
 
@@ -18,6 +18,12 @@ class ManuscriptService
     public function getManuscriptById($manuscript)
     {
         return $this->manuscript->findOrFail($manuscript);
+    }
+    public function store(array $data)
+    {
+        $volume = $this->volumeService->getLatestVolume();
+        $data['volume_id']= $volume->id;
+        return $this->manuscript->create($data);
     }
     public function update($manuscript, array $data)
     {
