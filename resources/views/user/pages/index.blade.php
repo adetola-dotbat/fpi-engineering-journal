@@ -37,7 +37,7 @@
     <section class="px-4 py-10 mt-10 md:px-10 lg:px-20 xl:px-56" id="about-us">
         <div class="flex flex-col-reverse gap-8 md:flex-row md:gap-12">
             <div class="hidden sm:hidden md:block lg:w-4/12">
-                <img src="{{ asset($editor->image) }}" alt="" class="rounded-lg w-96" />
+                <img src="{{ asset($editor->image) }}  " alt="" class="rounded-lg w-96" />
             </div>
             <div class="flex flex-col justify-center space-y-6 text-center md:text-left md:w-8/12 lg:space-y-9">
                 <h1 class="text-2xl font-bold sm:text-3xl">About Us</h1>

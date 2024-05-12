@@ -30,11 +30,10 @@ class ManuscriptController extends Controller
     public function create()
     {
         $data = [
-            'title_page' => 'Article',
-            'articles' => $this->manuscriptService->all(),
-            'volumes' => $this->volumeService->all(),
+            'title_page' => 'Manuscripts',
+            'manuscripts' => $this->manuscriptService->all(),
         ];
-        return view('administration.pages.article.index', $data);
+        return view('administration.pages.manuscript.index', $data);
     }
     public function store(ManuscriptRequest $request)
     {
@@ -51,13 +50,13 @@ class ManuscriptController extends Controller
             return redirect()->back()->with('error', 'Something went wrong');
         }
     }
-    public function edit($article)
+    public function edit($manuscript)
     {
         $data = [
-            'title_page' => 'Edit Article',
+            'title_page' => 'Edit manuscript',
             'volumes' => $this->volumeService->all(),
-            'articles' => $this->manuscriptService->all(),
-            'article' => $this->manuscriptService->getArticleById($article),
+            'manuscripts' => $this->manuscriptService->all(),
+            'article' => $this->manuscriptService->getManuscriptById($manuscript),
         ];
         return view('administration.pages.article.edit', $data);
     }
@@ -82,7 +81,7 @@ class ManuscriptController extends Controller
 
 
     }
-    public function update(Request $request, $article)
+    public function update(Request $request, $manuscript)
     {
         // dd($request);
         $data = $request->all();
@@ -92,12 +91,12 @@ class ManuscriptController extends Controller
         } else {
             $data['status'] = StatusEnum::ACTIVATE;
         }
-        $this->manuscriptService->update($article, $data);
-        return redirect()->route('article.create')->with('success', 'Article updated successfully');
+        $this->manuscriptService->update($manuscript, $data);
+        return redirect()->route('manuscript.create')->with('success', 'Manuscript updated successfully');
     }
-    public function destroy($article)
+    public function destroy($manuscript)
     {
-        $this->manuscriptService->destroy($article);
-        return redirect()->route('article.create')->with('success', 'Article deleted successfully');
+        $this->manuscriptService->destroy($manuscript);
+        return redirect()->route('manuscript.create')->with('success', 'Manuscript deleted successfully');
     }
 }

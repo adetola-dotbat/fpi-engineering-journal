@@ -8,6 +8,7 @@ use App\Http\Controllers\DesignationController;
 use App\Http\Controllers\EditorialBoardController;
 use App\Http\Controllers\GuidelineController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ManuscriptController;
 use App\Http\Controllers\PaperTemplateController;
 use App\Http\Controllers\QuickLinksController;
@@ -25,15 +26,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/test', function () {
-    return view('myhome');
-});
+// Route::get('/test', function () {
+//     return view('myhome');
+// });
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
-Route::get('/view-announcement/{announcement}', [AnnouncementController::class, 'show'])->name('announcement.view');
+Route::get('/view-announcement/{announcement}', [AnnouncementController::class, 'show'])->name('announcement.show');
 Route::get('/paper-template', [PaperTemplateController::class, 'index'])->name('paper-template.index');
 Route::get('/contact', [AboutController::class, 'contact'])->name('contact');
-// Route::resource('manuscript', ManuscriptController::class)->only(['index', 'create', 'destroy']);
 Route::get('manuscript', [ManuscriptController::class, 'index'])->name('manuscript.index');
 Route::post('manuscript', [ManuscriptController::class, 'store'])->name('manuscript.store');
 Route::get('/view-article/{article}', [ArticleController::class, 'show'])->name('view.article');
@@ -45,7 +45,7 @@ Route::resource('volume', VolumeController::class)->only(['index']);
 Route::resource('article', ArticleController::class)->only(['index']);
 Route::resource('guideline', GuidelineController::class)->only(['index']);
 Route::middleware(['auth'])->group(function () {
-    Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard');
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::resource('announcement', AnnouncementController::class)
         ->only(['create', 'edit', 'store', 'update', 'destroy']);
     Route::resource('about', AboutController::class)
@@ -66,6 +66,8 @@ Route::middleware(['auth'])->group(function () {
         ->only(['show', 'create', 'edit', 'store', 'update', 'destroy']);
     Route::resource('paper-template', PaperTemplateController::class)
         ->only(['show', 'create', 'edit', 'store', 'update', 'destroy']);
+Route::resource('manuscript', ManuscriptController::class)->only(['create', 'show', 'update', 'edit', 'destroy']);
+    
 });
 
 Auth::routes();

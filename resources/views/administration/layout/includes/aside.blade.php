@@ -59,6 +59,12 @@
             </a>
         </li>
         <li>
+            <a class="nav-link @if (Route::is('manuscript.create')) active @endif" href="{{ route('manuscript.create') }}">
+                <i class="bi bi-menu-button-wide"></i>
+                <span>Manuscript</span>
+            </a>
+        </li>
+        <li>
             <a class="nav-link @if (Route::is('paper-template.create')) active @endif" href="{{ route('paper-template.create') }}">
                 <i class="bi bi-menu-button-wide"></i>
                 <span>Paper Template</span>

@@ -23,7 +23,7 @@ class AnnouncementService
         return $this->announcement->where('status', StatusEnum::ACTIVATE)->latest()->limit(7)->get();
     }
     public function getAnnouncementBySlug($announcement){
-        return $this->announcement->where('slug', $announcement)->first();
+        return $this->announcement->where('id', $announcement)->first();
     }
     public function store(array $data)
     {

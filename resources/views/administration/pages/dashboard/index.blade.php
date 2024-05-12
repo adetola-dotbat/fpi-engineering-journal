@@ -16,11 +16,32 @@
 @section('content')
     <section class="section">
         <div class="row">
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title text-black">Dashboard</h5>
+            <div class="col-lg-4 col-md-6 col-sm-12">
+                <div class="card">
+                    <div class="card-body">
+                    <h5 class="card-title text-black">Volumes</h5>
+                    <p class="text-black">{{$volumes->count()}}</p>
+                    <!-- End Table with stripped rows -->
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-12">
+                <div class="card">
+                    <div class="card-body">
+                    <h5 class="card-title text-black">Articles</h5>
+                    <p class="text-black">{{ $articles->count() }}</p>
 
                     <!-- End Table with stripped rows -->
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-12">
+                <div class="card">
+                    <div class="card-body">
+                    <h5 class="card-title text-black">Manuscript</h5>
+                    <p class="text-black">{{ $manuscripts->count() }}</p>
+                    <!-- End Table with stripped rows -->
+                    </div>
                 </div>
             </div>
         </div>

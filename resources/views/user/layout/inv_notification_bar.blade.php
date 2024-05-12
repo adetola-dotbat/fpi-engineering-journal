@@ -4,12 +4,12 @@
             Notice Board
         </h1>
         <ul class="list-disc w-[55%] mx-auto mt-4 font-semibold text-fpiGreen">
-            @forelse ($announcements as $anouncement )
-            <li>
-                <a href="{{ route('announcement.view', $anouncement->slug) }}" class="underline">
-                    {{ $anouncement->title }}
-                </a>
-            </li>
+            @forelse ($announcements as $anouncement)
+                <li>
+                    <a href="{{ route('announcement.show', $anouncement->id) }}" class="underline">
+                        {{ $anouncement->title }}
+                    </a>
+                </li>
             @empty
                 <h4>No Announcement</h4>
             @endforelse
@@ -20,15 +20,15 @@
             Quick Links
         </h1>
         <ul class="list-disc w-[55%] mx-auto mt-4 font-semibold text-fpiGreen">
-          @forelse ($quickLinks as $link )
-          <li>
-            <a href="{{ $link->link }}" target="_blank" class="underline">
-              {{ $link->title }}
-            </a>
-        </li>
-          @empty
-              No links
-          @endforelse
+            @forelse ($quickLinks as $link)
+                <li>
+                    <a href="{{ $link->link }}" target="_blank" class="underline">
+                        {{ $link->title }}
+                    </a>
+                </li>
+            @empty
+                No links
+            @endforelse
         </ul>
     </div>
 </div>
